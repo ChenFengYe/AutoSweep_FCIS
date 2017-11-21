@@ -1,3 +1,6 @@
+# AutoSweep-FCIS
+This is FCIS for AutoSweep Project
+
 ## Fully Convolutional Instance-aware Semantic Segmentation
 
 The major contributors of this repository include [Haozhi Qi](https://github.com/Oh233), [Yi Li](https://github.com/liyi14), [Guodong Zhang](https://github.com/gd-zhang), [Haochen Zhang](https://github.com/Braininvat), [Jifeng Dai](https://github.com/daijifeng001), and [Yichen Wei](https://github.com/YichenWei).
