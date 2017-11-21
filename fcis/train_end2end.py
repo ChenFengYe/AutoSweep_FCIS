@@ -77,6 +77,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch, lr, 
                             mask_size=config.MASK_SIZE, binary_thresh=config.BINARY_THRESH,
                             result_path=final_output_path, flip=config.TRAIN.FLIP)
               for image_set in image_sets]
+
     sdsdb = merge_roidb(sdsdbs)
     sdsdb = filter_roidb(sdsdb, config)
 
@@ -95,6 +96,9 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch, lr, 
     print 'providing maximum shape', max_data_shape, max_label_shape
 
     # infer shape
+    print train_data.provide_data_single
+    print train_data.provide_label_single
+
     data_shape_dict = dict(train_data.provide_data_single + train_data.provide_label_single)
     print 'data shape:'
     pprint.pprint(data_shape_dict)
@@ -137,12 +141,14 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch, lr, 
                          fcis_acc, fcis_acc_fg, fcis_cls_loss, fcis_bbox_loss, fcis_mask_loss]:
         eval_metrics.add(child_metric)
 
+    # print eval_metrics
     batch_end_callback = callback.Speedometer(train_data.batch_size, frequent=args.frequent)
     means = np.tile(np.array(config.TRAIN.BBOX_MEANS), 2 if config.CLASS_AGNOSTIC else config.dataset.NUM_CLASSES)
     stds = np.tile(np.array(config.TRAIN.BBOX_STDS), 2 if config.CLASS_AGNOSTIC else config.dataset.NUM_CLASSES)
     epoch_end_callback = callback.do_checkpoint(prefix, means, stds)
 
-    # print epoch, begin_epoch, end_epoch, lr_step
+    #print epoch, begin_epoch, end_epoch, lr_step
+
     base_lr = lr
     lr_factor = 0.1
     lr_epoch = [float(epoch) for epoch in lr_step.split(',')]

@@ -21,16 +21,31 @@ def show_masks(im, detections, masks, class_names, cfg, scale=1.0, show = True):
     :param scale: visualize the scaled image
     :return:
     """
-    plt.cla()
-    plt.axis("off")
-    plt.imshow(im)
+    # plt.cla()
+    # plt.axis("off")
+    # plt.imshow(im)
+    im = np.zeros(im.shape,dtype=np.uint8)
+
     for j, name in enumerate(class_names):
         if name == '__background__':
             continue
-        dets = detections[j]
-        msks = masks[j]
+        # cube no cylinder label
+        # elif im_name[0:4] == 'cube' and (j == 3 or j == 4):
+        #     continue
+        # # cylinder no cube label
+        # elif im_name[0:8] == 'cylinder' and (j ==1 or j == 2):
+        #     continue
+
+        #liyuwei
+        k = j-1
+
+        dets = detections[k]
+        msks = masks[k]
+        i_instance = 0
         for det, msk in zip(dets, msks):
-            color = (random.random(), random.random(), random.random())  # generate a random color
+            # color = (random.random(), random.random(), random.random()) * 256  # generate a random color
+            i_instance = i_instance + 1
+            color = get_instance_color(name, i_instance)
             bbox = det[:4] * scale
             cod = bbox.astype(int)
             if im[cod[1]:cod[3], cod[0]:cod[2], 0].size > 0:
@@ -38,17 +53,30 @@ def show_masks(im, detections, masks, class_names, cfg, scale=1.0, show = True):
                 bimsk = msk >= cfg.BINARY_THRESH
                 bimsk = bimsk.astype(int)
                 bimsk = np.repeat(bimsk[:, :, np.newaxis], 3, axis=2)
-                mskd = im[cod[1]:cod[3]+1, cod[0]:cod[2]+1, :] * bimsk
                 clmsk = np.ones(bimsk.shape) * bimsk
-                clmsk[:, :, 0] = clmsk[:, :, 0] * color[0] * 256
-                clmsk[:, :, 1] = clmsk[:, :, 1] * color[1] * 256
-                clmsk[:, :, 2] = clmsk[:, :, 2] * color[2] * 256
-                im[cod[1]:cod[3]+1, cod[0]:cod[2]+1, :] = im[cod[1]:cod[3]+1, cod[0]:cod[2]+1, :] + 0.8 * clmsk - 0.8 * mskd
-            score = det[-1]
-            plt.gca().text((bbox[2]+bbox[0])/2, bbox[1],
-                           '{:s} {:.3f}'.format(name, score),
-                           bbox=dict(facecolor=color, alpha=0.9), fontsize=8, color='white')
-    plt.imshow(im)
+                clmsk[:, :, 0] = clmsk[:, :, 0] * color[0]
+                clmsk[:, :, 1] = clmsk[:, :, 1] * color[1]
+                clmsk[:, :, 2] = clmsk[:, :, 2] * color[2]
+                for r in range(cod[1], cod[3]+1):
+                    for c in range(cod[0], cod[2]+1):
+                        if np.any(clmsk[r-cod[1], c-cod[0],:] > [0, 0, 0]):
+                            im[r, c, :] = clmsk[r-cod[1], c-cod[0], :]
+                            # im[cod[1]:cod[3] + 1, cod[0]:cod[2] + 1, :] = im[cod[1]:cod[3] + 1, cod[0]:cod[2] + 1, :] + clmsk
     if show:
+        plt.imshow(im)
         plt.show()
     return im
+
+def get_instance_color(class_name, i_instance):
+    if class_name == '1':
+        color = (i_instance*10, 0, 255)
+    elif class_name == '2':
+        color = (i_instance*10, i_instance*10, 255)
+    elif class_name == '3':
+        color = (i_instance*10, 0, 200)
+    elif class_name == '4':
+        color = (i_instance*10, i_instance*10, 200)
+    elif class_name == '5':
+        color = (i_instance * 10, 0, 150)
+
+    return color

@@ -26,8 +26,19 @@ def load_proposal_roidb(dataset_name, image_set_name, root_path, dataset_path, r
 def load_gt_sdsdb(dataset_name, image_set_name, root_path, dataset_path,
                   result_path=None, flip=False, mask_size=21, binary_thresh=0.4):
     """ load ground truth sdsdb """
+    """liyuwei
+    print "xxx"
+    print dataset_name
+    print image_set_name
+    print root_path
+    print dataset_path
+    print result_path
+    print mask_size
+    print binary_thresh
+        """
     imdb = eval(dataset_name)(image_set_name, root_path, dataset_path, result_path,
                               mask_size=mask_size, binary_thresh=binary_thresh)
+    print imdb
     sdsdb = imdb.gt_sdsdb()
     if flip:
         sdsdb = imdb.append_flipped_images(sdsdb)

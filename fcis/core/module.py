@@ -946,6 +946,7 @@ class MutableModule(BaseModule):
         # training loop
         ################################################################################
         for epoch in range(begin_epoch, num_epoch):
+
             tic = time.time()
             eval_metric.reset()
             for nbatch, data_batch in enumerate(train_data):
@@ -956,7 +957,6 @@ class MutableModule(BaseModule):
                 self.update_metric(eval_metric, data_batch.label)
                 if monitor is not None:
                     monitor.toc_print()
-
                 if batch_end_callback is not None:
                     batch_end_params = BatchEndParam(epoch=epoch, nbatch=nbatch,
                                                      eval_metric=eval_metric,

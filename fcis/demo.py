@@ -5,6 +5,7 @@
 # Written by Haochen Zhang, Yi Li, Haozhi Qi
 # --------------------------------------------------------
 
+#
 import _init_paths
 
 import argparse
@@ -16,15 +17,25 @@ import cv2
 from config.config import config, update_config
 from utils.image import resize, transform
 import numpy as np
+
 # get config
+
 os.environ['PYTHONUNBUFFERED'] = '1'
 os.environ['MXNET_CUDNN_AUTOTUNE_DEFAULT'] = '0'
 os.environ['MXNET_ENABLE_GPU_P2P'] = '0'
 cur_path = os.path.abspath(os.path.dirname(__file__))
-update_config(cur_path + '/../experiments/fcis/cfgs/fcis_coco_demo.yaml')
+sys.path.insert(0, os.path.join(cur_path, '../external/mxnet', config.MXNET_VERSION))
+
+test_dir = './demo/onekeyGeonet/test/'
+# label_dir = './data/ObjectSnap/Refine/seg/'
+# result_dir = './demo/2017.8.6_geonet_training_data_color/'
+# result_dir = './demo/result/'
+result_dir = './demo/onekeyGeonet/result/'
+#update_config(cur_path + '/../experiments/fcis/cfgs/resnet_v1_101_ObjectSnap_synthetic_all_fcis_end2end_ohem.yaml')
 
 sys.path.insert(0, os.path.join(cur_path, '../external/mxnet', config.MXNET_VERSION))
 import mxnet as mx
+
 print "use mxnet at", mx.__file__
 from core.tester import im_detect, Predictor
 from symbols import *
@@ -33,38 +44,89 @@ from utils.show_masks import show_masks
 from utils.tictoc import tic, toc
 from nms.nms import py_nms_wrapper
 from mask.mask_transform import gpu_mask_voting, cpu_mask_voting
+import matplotlib.pyplot as plt
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Train FCIS Network')
+    # general
+    # configuration file is required
+    parser.add_argument('--cfg', help='experiment configure file name', required=True, type=str)
+
+    args, rest = parser.parse_known_args()
+    # update config
+    update_config(cur_path + '/../experiments/fcis/cfgs/' +args.cfg)
+
+    args = parser.parse_args()
+    return args
+
+def checkLabel(label):
+    label_flag = [];
+    for r in range(label.shape[0]):
+        for c in range(label.shape[1]):
+            if label[r, c, 1] == 0 and label[r, c, 2] == 255:  # cubo
+                label_flag.append(1)
+            elif label[r, c, 1] != 0 and label[r, c, 2] == 255:  # cufa
+                label_flag.append(2)
+            elif label[r, c, 1] != 0 and label[r, c, 2] == 200:  # cybo
+                label_flag.append(3)
+            elif label[r, c, 1] != 0 and label[r, c, 2] == 200:  # cyfa
+                label_flag.append(4)
+            elif label[r, c, 1] != 0 and label[r, c, 2] == 150:  # grip
+                label_flag.append(5)
+    return np.unique(label_flag)
 
 def main():
+    args = parse_args()
+    print(config.config_name)
     # get symbol
     ctx_id = [int(i) for i in config.gpus.split(',')]
-    pprint.pprint(config)
+    #pprint.pprint(config)
+
     sym_instance = eval(config.symbol)()
     sym = sym_instance.get_symbol(config, is_train=False)
 
     # set up class names
-    num_classes = 81
-    classes = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat',
-               'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse',
-               'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie',
-               'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove',
-               'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon',
-               'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut',
-               'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse',
-               'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book',
-               'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+    num_classes = config.dataset.NUM_CLASSES
+    if num_classes == 6:
+        classes = ['__background__',  # always index 0
+                   '1', '2', '3', '4', '5']
+    elif num_classes == 5:
+        classes = ['__background__',  # always index 0
+                   '1', '2', '3', '4']
+    elif num_classes == 3:
+        classes = ['__background__',  # always index 0
+                   '1', '2']
+
+    # classes = ['__background__',  # always index 0
+    #            'CubeBody', 'CubeFace', 'CylinderBody', 'CylinderFace', 'Grip']
 
     # load demo data
-    image_names = ['COCO_test2015_000000000275.jpg', 'COCO_test2015_000000001412.jpg', 'COCO_test2015_000000073428.jpg',
-                    'COCO_test2015_000000393281.jpg']
+    image_names = []
+    names_dirs = os.listdir(cur_path + '/../' + test_dir)
+    for im_name in names_dirs:
+        if im_name[-4:] == '.jpg':
+            image_names.append(im_name)
+    print('Number of Images: %d \n'%(len(image_names)))
+
     data = []
-    for im_name in image_names:
-        assert os.path.exists(cur_path + '/../demo/' + im_name), ('%s does not exist'.format('../demo/' + im_name))
-        im = cv2.imread(cur_path + '/../demo/' + im_name, cv2.IMREAD_COLOR | cv2.IMREAD_IGNORE_ORIENTATION)
+
+    # next [3001: len(image_names)]
+    for im_name in image_names[0:len(image_names)]:
+        assert os.path.exists(cur_path + '/../' + test_dir + im_name), (
+            '%s does not exist'.format('../demo/' + im_name))
+        im = cv2.imread(cur_path + '/../' + test_dir + im_name, cv2.IMREAD_COLOR | long(128))
         target_size = config.SCALES[0][0]
         max_size = config.SCALES[0][1]
+        # print "before scale: "
+        # print im.shape
         im, im_scale = resize(im, target_size, max_size, stride=config.network.IMAGE_STRIDE)
+        # print "after scale: "
+        # print im.shape
+        # im_scale = 1.0
+        # print "scale ratio: "
+        # print im_scale
         im_tensor = transform(im, config.network.PIXEL_MEANS)
+        # print im_tensor.shape
         im_info = np.array([[im_tensor.shape[2], im_tensor.shape[3], im_scale]], dtype=np.float32)
         data.append({'data': im_tensor, 'im_info': im_info})
 
@@ -75,7 +137,8 @@ def main():
     max_data_shape = [[('data', (1, 3, max([v[0] for v in config.SCALES]), max([v[1] for v in config.SCALES])))]]
     provide_data = [[(k, v.shape) for k, v in zip(data_names, data[i])] for i in xrange(len(data))]
     provide_label = [None for i in xrange(len(data))]
-    arg_params, aux_params = load_param(cur_path + '/../model/fcis_coco', 0, process=True)
+    model_path = cur_path + '/../' + config.output_path + '/' + config.config_name + '/' + config.dataset.image_set + '/' + config.TRAIN.model_prefix
+    arg_params, aux_params = load_param(model_path, config.TEST.test_epoch, process=True)
     predictor = Predictor(sym, data_names, label_names,
                           context=[mx.gpu(ctx_id[0])], max_data_shapes=max_data_shape,
                           provide_data=provide_data, provide_label=provide_label,
@@ -89,16 +152,20 @@ def main():
         scales = [data_batch.data[i][1].asnumpy()[0, 2] for i in xrange(len(data_batch.data))]
         _, _, _, _ = im_detect(predictor, data_batch, data_names, scales, config)
 
+    # 12342_mask Log
+    # LogTxt = open('LogRecorder.txt', 'w')
+
     # test
-    for idx, im_name in enumerate(image_names):
+    for idx, im_name in enumerate(image_names[0:len(image_names)]):
         data_batch = mx.io.DataBatch(data=[data[idx]], label=[], pad=0, index=idx,
                                      provide_data=[[(k, v.shape) for k, v in zip(data_names, data[idx])]],
                                      provide_label=[None])
         scales = [data_batch.data[i][1].asnumpy()[0, 2] for i in xrange(len(data_batch.data))]
 
         tic()
-        scores, boxes, masks, data_dict = im_detect(predictor, data_batch, data_names, scales, config)
+        scores, boxes, masks, data_dict = im_detect(predictor, data_batch, data_names, [1.0], config)
         im_shapes = [data_batch.data[i][0].shape[2:4] for i in xrange(len(data_batch.data))]
+        # print im_shapes
 
         if not config.TEST.USE_MASK_MERGE:
             all_boxes = [[] for _ in xrange(num_classes)]
@@ -134,14 +201,19 @@ def main():
         print 'testing {} {:.4f}s'.format(im_name, toc())
         # visualize
         for i in xrange(len(dets)):
-            keep = np.where(dets[i][:,-1]>0.7)
+            keep = np.where(dets[i][:, -1] > 0.7)
             dets[i] = dets[i][keep]
             masks[i] = masks[i][keep]
-        im = cv2.imread(cur_path + '/../demo/' + im_name)
+        im = cv2.imread(cur_path + '/../' + test_dir + im_name)
+        # im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+        im = show_masks(im, dets, masks, classes, config, 1.0 / scales[0], False)
         im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-        show_masks(im, dets, masks, classes, config)
+        savePath = cur_path + '/../'+ result_dir + im_name[0:-4]+'.png';
+        cv2.imwrite(savePath, im)
 
     print 'done'
 
+
 if __name__ == '__main__':
     main()
+

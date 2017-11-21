@@ -1,0 +1,804 @@
+2017-10-25 13:12:05,782 training config:{'BINARY_THRESH': 0.4,
+ 'CLASS_AGNOSTIC': True,
+ 'MASK_SIZE': 21,
+ 'MXNET_VERSION': 'mxnet',
+ 'SCALES': [(600, 1000)],
+ 'TEST': {'BATCH_IMAGES': 1,
+          'CXX_PROPOSAL': False,
+          'HAS_RPN': True,
+          'ITER': 2,
+          'MASK_MERGE_THRESH': 0.5,
+          'MIN_DROP_SIZE': 16,
+          'NMS': 0.3,
+          'PROPOSAL_MIN_SIZE': 16,
+          'PROPOSAL_NMS_THRESH': 0.7,
+          'PROPOSAL_POST_NMS_TOP_N': 2000,
+          'PROPOSAL_PRE_NMS_TOP_N': 20000,
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'USE_GPU_MASK_MERGE': True,
+          'USE_MASK_MERGE': True,
+          'test_epoch': 20},
+ 'TRAIN': {'ASPECT_GROUPING': True,
+           'BATCH_IMAGES': 1,
+           'BATCH_ROIS': 128,
+           'BATCH_ROIS_OHEM': 128,
+           'BBOX_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZATION_PRECOMPUTED': True,
+           'BBOX_REGRESSION_THRESH': 0.5,
+           'BBOX_STDS': [0.2, 0.2, 0.5, 0.5],
+           'BBOX_WEIGHTS': array([ 1.,  1.,  1.,  1.]),
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.1,
+           'BINARY_THRESH': 0.4,
+           'CONVNEW3': True,
+           'CXX_PROPOSAL': False,
+           'ENABLE_OHEM': True,
+           'END2END': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'FLIP': True,
+           'GAP_SELECT_FROM_ALL': False,
+           'IGNORE_GAP': False,
+           'LOSS_WEIGHT': [1.0, 10.0, 1.0],
+           'RESUME': False,
+           'RPN_ALLOWED_BORDER': 0,
+           'RPN_BATCH_SIZE': 256,
+           'RPN_BBOX_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SHUFFLE': True,
+           'begin_epoch': 0,
+           'end_epoch': 20,
+           'lr': 0.0002,
+           'lr_step': '14',
+           'model_prefix': 'e2e',
+           'momentum': 0.9,
+           'warmup': True,
+           'warmup_lr': 5e-05,
+           'warmup_step': 4000,
+           'wd': 0.0005},
+ 'config_name': 'resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002',
+ 'dataset': {'NUM_CLASSES': 3,
+             'dataset': 'ObjectSnap',
+             'dataset_path': './data/ObjectSnap',
+             'image_set': 'XiaoCube_MagicLeapTrain',
+             'proposal': 'rpn',
+             'root_path': './data',
+             'test_image_set': 'XiaoCube_MagicLeapVal'},
+ 'default': {'frequent': 100, 'kvstore': 'device'},
+ 'gpus': '0,1',
+ 'network': {'ANCHOR_RATIOS': [0.5, 1, 2],
+             'ANCHOR_SCALES': [8, 16, 32],
+             'FIXED_PARAMS': ['conv1',
+                              'bn_conv1',
+                              'res2',
+                              'bn2',
+                              'gamma',
+                              'beta'],
+             'FIXED_PARAMS_SHARED': ['conv1',
+                                     'bn_conv1',
+                                     'res2',
+                                     'bn2',
+                                     'res3',
+                                     'bn3',
+                                     'res4',
+                                     'bn4',
+                                     'gamma',
+                                     'beta'],
+             'IMAGE_STRIDE': 0,
+             'NUM_ANCHORS': 9,
+             'PIXEL_MEANS': array([ 103.06,  115.9 ,  123.15]),
+             'RCNN_FEAT_STRIDE': 16,
+             'RPN_FEAT_STRIDE': 16,
+             'pretrained': './model/pretrained_model/ob_data',
+             'pretrained_epoch': 0},
+ 'output_path': './output/fcis/ObjectSnap',
+ 'symbol': 'resnet_v1_101_fcis'}
+
+2017-10-25 13:12:33,357 Epoch[0] Batch [100]	Speed: 9.04 samples/sec	Train-RPNAcc=0.892946,	RPNLogLoss=0.269409,	RPNL1Loss=0.195258,	FCISAcc=0.826578,	FCISAccFG=0.098447,	FCISLogLoss=0.556100,	FCISL1Loss=0.074054,	FCISMaskLoss=0.401450,	
+2017-10-25 13:12:56,249 Epoch[0] Batch [200]	Speed: 8.74 samples/sec	Train-RPNAcc=0.911624,	RPNLogLoss=0.228118,	RPNL1Loss=0.184998,	FCISAcc=0.837142,	FCISAccFG=0.111930,	FCISLogLoss=0.458946,	FCISL1Loss=0.072516,	FCISMaskLoss=0.324260,	
+2017-10-25 13:13:19,137 Epoch[0] Batch [300]	Speed: 8.74 samples/sec	Train-RPNAcc=0.923277,	RPNLogLoss=0.201682,	RPNL1Loss=0.171846,	FCISAcc=0.846008,	FCISAccFG=0.194286,	FCISLogLoss=0.414883,	FCISL1Loss=0.067302,	FCISMaskLoss=0.288975,	
+2017-10-25 13:13:41,577 Epoch[0] Batch [400]	Speed: 8.91 samples/sec	Train-RPNAcc=0.929498,	RPNLogLoss=0.186751,	RPNL1Loss=0.162616,	FCISAcc=0.853472,	FCISAccFG=0.246791,	FCISLogLoss=0.387388,	FCISL1Loss=0.063064,	FCISMaskLoss=0.274612,	
+2017-10-25 13:14:04,830 Epoch[0] Batch [500]	Speed: 8.60 samples/sec	Train-RPNAcc=0.934985,	RPNLogLoss=0.173221,	RPNL1Loss=0.154388,	FCISAcc=0.858510,	FCISAccFG=0.301209,	FCISLogLoss=0.368673,	FCISL1Loss=0.060008,	FCISMaskLoss=0.257533,	
+2017-10-25 13:14:28,911 Epoch[0] Batch [600]	Speed: 8.31 samples/sec	Train-RPNAcc=0.939518,	RPNLogLoss=0.162512,	RPNL1Loss=0.151300,	FCISAcc=0.864575,	FCISAccFG=0.344170,	FCISLogLoss=0.350205,	FCISL1Loss=0.056599,	FCISMaskLoss=0.246097,	
+2017-10-25 13:14:40,257 Epoch[0] Train-RPNAcc=0.941040
+2017-10-25 13:14:40,257 Epoch[0] Train-RPNLogLoss=0.158435
+2017-10-25 13:14:40,258 Epoch[0] Train-RPNL1Loss=0.147943
+2017-10-25 13:14:40,258 Epoch[0] Train-FCISAcc=0.866595
+2017-10-25 13:14:40,258 Epoch[0] Train-FCISAccFG=0.363744
+2017-10-25 13:14:40,258 Epoch[0] Train-FCISLogLoss=0.343342
+2017-10-25 13:14:40,258 Epoch[0] Train-FCISL1Loss=0.055443
+2017-10-25 13:14:40,258 Epoch[0] Train-FCISMaskLoss=0.240847
+2017-10-25 13:14:40,258 Epoch[0] Time cost=150.075
+2017-10-25 13:14:41,140 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0001.params"
+2017-10-25 13:15:04,470 Epoch[1] Batch [100]	Speed: 8.71 samples/sec	Train-RPNAcc=0.955078,	RPNLogLoss=0.123269,	RPNL1Loss=0.118193,	FCISAcc=0.884205,	FCISAccFG=0.552764,	FCISLogLoss=0.279605,	FCISL1Loss=0.047175,	FCISMaskLoss=0.208940,	
+2017-10-25 13:15:27,792 Epoch[1] Batch [200]	Speed: 8.58 samples/sec	Train-RPNAcc=0.957099,	RPNLogLoss=0.117688,	RPNL1Loss=0.112018,	FCISAcc=0.883881,	FCISAccFG=0.556507,	FCISLogLoss=0.278225,	FCISL1Loss=0.046408,	FCISMaskLoss=0.210281,	
+2017-10-25 13:15:51,609 Epoch[1] Batch [300]	Speed: 8.40 samples/sec	Train-RPNAcc=0.958744,	RPNLogLoss=0.115141,	RPNL1Loss=0.109831,	FCISAcc=0.887705,	FCISAccFG=0.569716,	FCISLogLoss=0.271092,	FCISL1Loss=0.045244,	FCISMaskLoss=0.207673,	
+2017-10-25 13:16:14,831 Epoch[1] Batch [400]	Speed: 8.61 samples/sec	Train-RPNAcc=0.959272,	RPNLogLoss=0.112830,	RPNL1Loss=0.108212,	FCISAcc=0.888735,	FCISAccFG=0.581237,	FCISLogLoss=0.267838,	FCISL1Loss=0.044201,	FCISMaskLoss=0.204086,	
+2017-10-25 13:16:38,716 Epoch[1] Batch [500]	Speed: 8.37 samples/sec	Train-RPNAcc=0.958563,	RPNLogLoss=0.113554,	RPNL1Loss=0.106288,	FCISAcc=0.889533,	FCISAccFG=0.588857,	FCISLogLoss=0.266291,	FCISL1Loss=0.043285,	FCISMaskLoss=0.202422,	
+2017-10-25 13:17:03,008 Epoch[1] Batch [600]	Speed: 8.23 samples/sec	Train-RPNAcc=0.960736,	RPNLogLoss=0.108819,	RPNL1Loss=0.103700,	FCISAcc=0.890508,	FCISAccFG=0.601150,	FCISLogLoss=0.262214,	FCISL1Loss=0.041861,	FCISMaskLoss=0.197225,	
+2017-10-25 13:17:14,791 Epoch[1] Train-RPNAcc=0.961403
+2017-10-25 13:17:14,791 Epoch[1] Train-RPNLogLoss=0.107046
+2017-10-25 13:17:14,791 Epoch[1] Train-RPNL1Loss=0.103516
+2017-10-25 13:17:14,791 Epoch[1] Train-FCISAcc=0.891157
+2017-10-25 13:17:14,791 Epoch[1] Train-FCISAccFG=0.605614
+2017-10-25 13:17:14,791 Epoch[1] Train-FCISLogLoss=0.260708
+2017-10-25 13:17:14,791 Epoch[1] Train-FCISL1Loss=0.041324
+2017-10-25 13:17:14,791 Epoch[1] Train-FCISMaskLoss=0.195252
+2017-10-25 13:17:14,791 Epoch[1] Time cost=153.650
+2017-10-25 13:17:15,914 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0002.params"
+2017-10-25 13:17:39,758 Epoch[2] Batch [100]	Speed: 8.52 samples/sec	Train-RPNAcc=0.965463,	RPNLogLoss=0.094272,	RPNL1Loss=0.083393,	FCISAcc=0.893448,	FCISAccFG=0.639685,	FCISLogLoss=0.254535,	FCISL1Loss=0.039511,	FCISMaskLoss=0.180647,	
+2017-10-25 13:18:03,433 Epoch[2] Batch [200]	Speed: 8.45 samples/sec	Train-RPNAcc=0.963211,	RPNLogLoss=0.099259,	RPNL1Loss=0.087018,	FCISAcc=0.895717,	FCISAccFG=0.647268,	FCISLogLoss=0.250833,	FCISL1Loss=0.038650,	FCISMaskLoss=0.184784,	
+2017-10-25 13:18:27,155 Epoch[2] Batch [300]	Speed: 8.43 samples/sec	Train-RPNAcc=0.961846,	RPNLogLoss=0.101912,	RPNL1Loss=0.091252,	FCISAcc=0.894142,	FCISAccFG=0.640537,	FCISLogLoss=0.256349,	FCISL1Loss=0.039991,	FCISMaskLoss=0.193150,	
+2017-10-25 13:18:51,137 Epoch[2] Batch [400]	Speed: 8.34 samples/sec	Train-RPNAcc=0.961712,	RPNLogLoss=0.102496,	RPNL1Loss=0.088674,	FCISAcc=0.894989,	FCISAccFG=0.644677,	FCISLogLoss=0.254715,	FCISL1Loss=0.039619,	FCISMaskLoss=0.193646,	
+2017-10-25 13:19:14,377 Epoch[2] Batch [500]	Speed: 8.61 samples/sec	Train-RPNAcc=0.962173,	RPNLogLoss=0.101360,	RPNL1Loss=0.088310,	FCISAcc=0.894765,	FCISAccFG=0.649969,	FCISLogLoss=0.254454,	FCISL1Loss=0.039512,	FCISMaskLoss=0.190854,	
+2017-10-25 13:19:39,849 Epoch[2] Batch [600]	Speed: 7.85 samples/sec	Train-RPNAcc=0.964178,	RPNLogLoss=0.096927,	RPNL1Loss=0.087531,	FCISAcc=0.896065,	FCISAccFG=0.658857,	FCISLogLoss=0.250875,	FCISL1Loss=0.038461,	FCISMaskLoss=0.187332,	
+2017-10-25 13:19:51,036 Epoch[2] Train-RPNAcc=0.965116
+2017-10-25 13:19:51,036 Epoch[2] Train-RPNLogLoss=0.094613
+2017-10-25 13:19:51,036 Epoch[2] Train-RPNL1Loss=0.087046
+2017-10-25 13:19:51,037 Epoch[2] Train-FCISAcc=0.896648
+2017-10-25 13:19:51,037 Epoch[2] Train-FCISAccFG=0.662686
+2017-10-25 13:19:51,037 Epoch[2] Train-FCISLogLoss=0.248998
+2017-10-25 13:19:51,037 Epoch[2] Train-FCISL1Loss=0.037987
+2017-10-25 13:19:51,037 Epoch[2] Train-FCISMaskLoss=0.183491
+2017-10-25 13:19:51,037 Epoch[2] Time cost=155.121
+2017-10-25 13:19:52,061 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0003.params"
+2017-10-25 13:20:16,069 Epoch[3] Batch [100]	Speed: 8.46 samples/sec	Train-RPNAcc=0.970471,	RPNLogLoss=0.082729,	RPNL1Loss=0.074306,	FCISAcc=0.897006,	FCISAccFG=0.678540,	FCISLogLoss=0.246627,	FCISL1Loss=0.037089,	FCISMaskLoss=0.179538,	
+2017-10-25 13:20:39,751 Epoch[3] Batch [200]	Speed: 8.45 samples/sec	Train-RPNAcc=0.964348,	RPNLogLoss=0.094464,	RPNL1Loss=0.078894,	FCISAcc=0.894084,	FCISAccFG=0.668297,	FCISLogLoss=0.254808,	FCISL1Loss=0.039047,	FCISMaskLoss=0.189557,	
+2017-10-25 13:21:03,619 Epoch[3] Batch [300]	Speed: 8.38 samples/sec	Train-RPNAcc=0.965103,	RPNLogLoss=0.092757,	RPNL1Loss=0.077011,	FCISAcc=0.894012,	FCISAccFG=0.668698,	FCISLogLoss=0.255920,	FCISL1Loss=0.039270,	FCISMaskLoss=0.187772,	
+2017-10-25 13:21:27,535 Epoch[3] Batch [400]	Speed: 8.36 samples/sec	Train-RPNAcc=0.963519,	RPNLogLoss=0.096518,	RPNL1Loss=0.078078,	FCISAcc=0.894083,	FCISAccFG=0.662046,	FCISLogLoss=0.257536,	FCISL1Loss=0.039210,	FCISMaskLoss=0.190149,	
+2017-10-25 13:21:50,740 Epoch[3] Batch [500]	Speed: 8.62 samples/sec	Train-RPNAcc=0.964700,	RPNLogLoss=0.093934,	RPNL1Loss=0.076970,	FCISAcc=0.895108,	FCISAccFG=0.668867,	FCISLogLoss=0.255024,	FCISL1Loss=0.038708,	FCISMaskLoss=0.187537,	
+2017-10-25 13:22:16,536 Epoch[3] Batch [600]	Speed: 7.75 samples/sec	Train-RPNAcc=0.966933,	RPNLogLoss=0.088945,	RPNL1Loss=0.076120,	FCISAcc=0.896683,	FCISAccFG=0.680180,	FCISLogLoss=0.249704,	FCISL1Loss=0.037492,	FCISMaskLoss=0.181868,	
+2017-10-25 13:22:27,544 Epoch[3] Train-RPNAcc=0.967665
+2017-10-25 13:22:27,544 Epoch[3] Train-RPNLogLoss=0.087099
+2017-10-25 13:22:27,544 Epoch[3] Train-RPNL1Loss=0.075574
+2017-10-25 13:22:27,544 Epoch[3] Train-FCISAcc=0.897887
+2017-10-25 13:22:27,544 Epoch[3] Train-FCISAccFG=0.684161
+2017-10-25 13:22:27,544 Epoch[3] Train-FCISLogLoss=0.246994
+2017-10-25 13:22:27,545 Epoch[3] Train-FCISL1Loss=0.036906
+2017-10-25 13:22:27,545 Epoch[3] Train-FCISMaskLoss=0.179187
+2017-10-25 13:22:27,545 Epoch[3] Time cost=155.482
+2017-10-25 13:22:29,634 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0004.params"
+2017-10-25 13:22:53,321 Epoch[4] Batch [100]	Speed: 8.59 samples/sec	Train-RPNAcc=0.967319,	RPNLogLoss=0.086004,	RPNL1Loss=0.075291,	FCISAcc=0.900333,	FCISAccFG=0.674414,	FCISLogLoss=0.242701,	FCISL1Loss=0.035239,	FCISMaskLoss=0.182615,	
+2017-10-25 13:23:17,060 Epoch[4] Batch [200]	Speed: 8.43 samples/sec	Train-RPNAcc=0.968517,	RPNLogLoss=0.083066,	RPNL1Loss=0.069474,	FCISAcc=0.903374,	FCISAccFG=0.691380,	FCISLogLoss=0.237092,	FCISL1Loss=0.034494,	FCISMaskLoss=0.175350,	
+2017-10-25 13:23:40,760 Epoch[4] Batch [300]	Speed: 8.44 samples/sec	Train-RPNAcc=0.967225,	RPNLogLoss=0.086107,	RPNL1Loss=0.073277,	FCISAcc=0.899073,	FCISAccFG=0.683288,	FCISLogLoss=0.245958,	FCISL1Loss=0.036702,	FCISMaskLoss=0.181734,	
+2017-10-25 13:24:04,658 Epoch[4] Batch [400]	Speed: 8.37 samples/sec	Train-RPNAcc=0.966982,	RPNLogLoss=0.086829,	RPNL1Loss=0.072908,	FCISAcc=0.898506,	FCISAccFG=0.685544,	FCISLogLoss=0.245667,	FCISL1Loss=0.037281,	FCISMaskLoss=0.183022,	
+2017-10-25 13:24:27,908 Epoch[4] Batch [500]	Speed: 8.60 samples/sec	Train-RPNAcc=0.967311,	RPNLogLoss=0.086176,	RPNL1Loss=0.070586,	FCISAcc=0.898898,	FCISAccFG=0.690042,	FCISLogLoss=0.245729,	FCISL1Loss=0.037034,	FCISMaskLoss=0.181795,	
+2017-10-25 13:24:52,948 Epoch[4] Batch [600]	Speed: 7.99 samples/sec	Train-RPNAcc=0.969107,	RPNLogLoss=0.082037,	RPNL1Loss=0.070605,	FCISAcc=0.901018,	FCISAccFG=0.700440,	FCISLogLoss=0.240157,	FCISL1Loss=0.036093,	FCISMaskLoss=0.176068,	
+2017-10-25 13:25:04,248 Epoch[4] Train-RPNAcc=0.970023
+2017-10-25 13:25:04,249 Epoch[4] Train-RPNLogLoss=0.080043
+2017-10-25 13:25:04,249 Epoch[4] Train-RPNL1Loss=0.070025
+2017-10-25 13:25:04,249 Epoch[4] Train-FCISAcc=0.902180
+2017-10-25 13:25:04,249 Epoch[4] Train-FCISAccFG=0.705259
+2017-10-25 13:25:04,249 Epoch[4] Train-FCISLogLoss=0.237147
+2017-10-25 13:25:04,249 Epoch[4] Train-FCISL1Loss=0.035498
+2017-10-25 13:25:04,249 Epoch[4] Train-FCISMaskLoss=0.174095
+2017-10-25 13:25:04,249 Epoch[4] Time cost=154.613
+2017-10-25 13:25:04,735 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0005.params"
+2017-10-25 13:25:28,788 Epoch[5] Batch [100]	Speed: 8.42 samples/sec	Train-RPNAcc=0.968228,	RPNLogLoss=0.083464,	RPNL1Loss=0.064575,	FCISAcc=0.903079,	FCISAccFG=0.696577,	FCISLogLoss=0.240166,	FCISL1Loss=0.035077,	FCISMaskLoss=0.184159,	
+2017-10-25 13:25:52,498 Epoch[5] Batch [200]	Speed: 8.44 samples/sec	Train-RPNAcc=0.967273,	RPNLogLoss=0.085738,	RPNL1Loss=0.065900,	FCISAcc=0.902499,	FCISAccFG=0.704094,	FCISLogLoss=0.239680,	FCISL1Loss=0.035574,	FCISMaskLoss=0.178643,	
+2017-10-25 13:26:15,953 Epoch[5] Batch [300]	Speed: 8.53 samples/sec	Train-RPNAcc=0.970333,	RPNLogLoss=0.078552,	RPNL1Loss=0.061918,	FCISAcc=0.904524,	FCISAccFG=0.714696,	FCISLogLoss=0.234123,	FCISL1Loss=0.034815,	FCISMaskLoss=0.175464,	
+2017-10-25 13:26:40,082 Epoch[5] Batch [400]	Speed: 8.29 samples/sec	Train-RPNAcc=0.969826,	RPNLogLoss=0.080119,	RPNL1Loss=0.066060,	FCISAcc=0.903922,	FCISAccFG=0.709818,	FCISLogLoss=0.235466,	FCISL1Loss=0.035071,	FCISMaskLoss=0.178860,	
+2017-10-25 13:27:03,339 Epoch[5] Batch [500]	Speed: 8.60 samples/sec	Train-RPNAcc=0.969346,	RPNLogLoss=0.081052,	RPNL1Loss=0.066314,	FCISAcc=0.903942,	FCISAccFG=0.712336,	FCISLogLoss=0.236026,	FCISL1Loss=0.035147,	FCISMaskLoss=0.178146,	
+2017-10-25 13:27:29,046 Epoch[5] Batch [600]	Speed: 7.78 samples/sec	Train-RPNAcc=0.970489,	RPNLogLoss=0.078609,	RPNL1Loss=0.065400,	FCISAcc=0.904638,	FCISAccFG=0.717442,	FCISLogLoss=0.232570,	FCISL1Loss=0.034351,	FCISMaskLoss=0.173980,	
+2017-10-25 13:27:39,382 Epoch[5] Train-RPNAcc=0.971704
+2017-10-25 13:27:39,382 Epoch[5] Train-RPNLogLoss=0.075800
+2017-10-25 13:27:39,382 Epoch[5] Train-RPNL1Loss=0.065165
+2017-10-25 13:27:39,383 Epoch[5] Train-FCISAcc=0.905694
+2017-10-25 13:27:39,383 Epoch[5] Train-FCISAccFG=0.721577
+2017-10-25 13:27:39,383 Epoch[5] Train-FCISLogLoss=0.229571
+2017-10-25 13:27:39,383 Epoch[5] Train-FCISL1Loss=0.033781
+2017-10-25 13:27:39,383 Epoch[5] Train-FCISMaskLoss=0.170825
+2017-10-25 13:27:39,383 Epoch[5] Time cost=154.647
+2017-10-25 13:27:39,913 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0006.params"
+2017-10-25 13:28:03,785 Epoch[6] Batch [100]	Speed: 8.49 samples/sec	Train-RPNAcc=0.969021,	RPNLogLoss=0.080938,	RPNL1Loss=0.059607,	FCISAcc=0.897973,	FCISAccFG=0.693370,	FCISLogLoss=0.245617,	FCISL1Loss=0.034613,	FCISMaskLoss=0.178822,	
+2017-10-25 13:28:27,422 Epoch[6] Batch [200]	Speed: 8.46 samples/sec	Train-RPNAcc=0.967069,	RPNLogLoss=0.087755,	RPNL1Loss=0.074454,	FCISAcc=0.899118,	FCISAccFG=0.690996,	FCISLogLoss=0.245408,	FCISL1Loss=0.035275,	FCISMaskLoss=0.181175,	
+2017-10-25 13:28:51,047 Epoch[6] Batch [300]	Speed: 8.47 samples/sec	Train-RPNAcc=0.963007,	RPNLogLoss=0.097744,	RPNL1Loss=0.079304,	FCISAcc=0.897399,	FCISAccFG=0.677985,	FCISLogLoss=0.252266,	FCISL1Loss=0.036909,	FCISMaskLoss=0.188019,	
+2017-10-25 13:29:14,481 Epoch[6] Batch [400]	Speed: 8.53 samples/sec	Train-RPNAcc=0.962413,	RPNLogLoss=0.099382,	RPNL1Loss=0.079866,	FCISAcc=0.897327,	FCISAccFG=0.672413,	FCISLogLoss=0.253592,	FCISL1Loss=0.037553,	FCISMaskLoss=0.192487,	
+2017-10-25 13:29:38,125 Epoch[6] Batch [500]	Speed: 8.46 samples/sec	Train-RPNAcc=0.962700,	RPNLogLoss=0.098720,	RPNL1Loss=0.078820,	FCISAcc=0.897393,	FCISAccFG=0.672784,	FCISLogLoss=0.252829,	FCISL1Loss=0.037470,	FCISMaskLoss=0.192804,	
+2017-10-25 13:30:03,187 Epoch[6] Batch [600]	Speed: 7.98 samples/sec	Train-RPNAcc=0.964438,	RPNLogLoss=0.095541,	RPNL1Loss=0.078549,	FCISAcc=0.898827,	FCISAccFG=0.676485,	FCISLogLoss=0.249640,	FCISL1Loss=0.037182,	FCISMaskLoss=0.193323,	
+2017-10-25 13:30:14,393 Epoch[6] Train-RPNAcc=0.965485
+2017-10-25 13:30:14,393 Epoch[6] Train-RPNLogLoss=0.093297
+2017-10-25 13:30:14,393 Epoch[6] Train-RPNL1Loss=0.079478
+2017-10-25 13:30:14,393 Epoch[6] Train-FCISAcc=0.899308
+2017-10-25 13:30:14,393 Epoch[6] Train-FCISAccFG=0.678136
+2017-10-25 13:30:14,393 Epoch[6] Train-FCISLogLoss=0.248561
+2017-10-25 13:30:14,393 Epoch[6] Train-FCISL1Loss=0.037331
+2017-10-25 13:30:14,393 Epoch[6] Train-FCISMaskLoss=0.193877
+2017-10-25 13:30:14,394 Epoch[6] Time cost=154.480
+2017-10-25 13:30:14,943 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0007.params"
+2017-10-25 13:30:38,627 Epoch[7] Batch [100]	Speed: 8.54 samples/sec	Train-RPNAcc=0.965559,	RPNLogLoss=0.092696,	RPNL1Loss=0.069883,	FCISAcc=0.895073,	FCISAccFG=0.651655,	FCISLogLoss=0.256986,	FCISL1Loss=0.038715,	FCISMaskLoss=0.193260,	
+2017-10-25 13:31:02,350 Epoch[7] Batch [200]	Speed: 8.43 samples/sec	Train-RPNAcc=0.965514,	RPNLogLoss=0.093972,	RPNL1Loss=0.067521,	FCISAcc=0.898399,	FCISAccFG=0.675809,	FCISLogLoss=0.247700,	FCISL1Loss=0.036613,	FCISMaskLoss=0.188860,	
+2017-10-25 13:31:25,616 Epoch[7] Batch [300]	Speed: 8.60 samples/sec	Train-RPNAcc=0.965480,	RPNLogLoss=0.093041,	RPNL1Loss=0.067168,	FCISAcc=0.899748,	FCISAccFG=0.680419,	FCISLogLoss=0.245556,	FCISL1Loss=0.036648,	FCISMaskLoss=0.188944,	
+2017-10-25 13:31:49,658 Epoch[7] Batch [400]	Speed: 8.32 samples/sec	Train-RPNAcc=0.965121,	RPNLogLoss=0.092506,	RPNL1Loss=0.068464,	FCISAcc=0.900366,	FCISAccFG=0.685078,	FCISLogLoss=0.243234,	FCISL1Loss=0.036275,	FCISMaskLoss=0.188482,	
+2017-10-25 13:32:13,099 Epoch[7] Batch [500]	Speed: 8.53 samples/sec	Train-RPNAcc=0.966282,	RPNLogLoss=0.089780,	RPNL1Loss=0.067894,	FCISAcc=0.900613,	FCISAccFG=0.688000,	FCISLogLoss=0.242825,	FCISL1Loss=0.036437,	FCISMaskLoss=0.187941,	
+2017-10-25 13:32:37,713 Epoch[7] Batch [600]	Speed: 8.13 samples/sec	Train-RPNAcc=0.968399,	RPNLogLoss=0.085138,	RPNL1Loss=0.068081,	FCISAcc=0.903793,	FCISAccFG=0.700200,	FCISLogLoss=0.234668,	FCISL1Loss=0.034946,	FCISMaskLoss=0.183824,	
+2017-10-25 13:32:49,172 Epoch[7] Train-RPNAcc=0.968886
+2017-10-25 13:32:49,172 Epoch[7] Train-RPNLogLoss=0.084106
+2017-10-25 13:32:49,172 Epoch[7] Train-RPNL1Loss=0.068475
+2017-10-25 13:32:49,172 Epoch[7] Train-FCISAcc=0.904115
+2017-10-25 13:32:49,172 Epoch[7] Train-FCISAccFG=0.701460
+2017-10-25 13:32:49,172 Epoch[7] Train-FCISLogLoss=0.233923
+2017-10-25 13:32:49,172 Epoch[7] Train-FCISL1Loss=0.034850
+2017-10-25 13:32:49,173 Epoch[7] Train-FCISMaskLoss=0.185282
+2017-10-25 13:32:49,173 Epoch[7] Time cost=154.229
+2017-10-25 13:32:49,682 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0008.params"
+2017-10-25 13:33:13,780 Epoch[8] Batch [100]	Speed: 8.40 samples/sec	Train-RPNAcc=0.963838,	RPNLogLoss=0.098552,	RPNL1Loss=0.062962,	FCISAcc=0.902344,	FCISAccFG=0.694957,	FCISLogLoss=0.241224,	FCISL1Loss=0.034801,	FCISMaskLoss=0.187137,	
+2017-10-25 13:33:37,281 Epoch[8] Batch [200]	Speed: 8.51 samples/sec	Train-RPNAcc=0.967856,	RPNLogLoss=0.086668,	RPNL1Loss=0.065188,	FCISAcc=0.904035,	FCISAccFG=0.699452,	FCISLogLoss=0.237913,	FCISL1Loss=0.034182,	FCISMaskLoss=0.183790,	
+2017-10-25 13:34:00,668 Epoch[8] Batch [300]	Speed: 8.55 samples/sec	Train-RPNAcc=0.969503,	RPNLogLoss=0.082088,	RPNL1Loss=0.062311,	FCISAcc=0.905406,	FCISAccFG=0.712606,	FCISLogLoss=0.234133,	FCISL1Loss=0.033973,	FCISMaskLoss=0.178700,	
+2017-10-25 13:34:24,356 Epoch[8] Batch [400]	Speed: 8.44 samples/sec	Train-RPNAcc=0.970055,	RPNLogLoss=0.080957,	RPNL1Loss=0.060495,	FCISAcc=0.906688,	FCISAccFG=0.716029,	FCISLogLoss=0.230225,	FCISL1Loss=0.033591,	FCISMaskLoss=0.178806,	
+2017-10-25 13:34:48,183 Epoch[8] Batch [500]	Speed: 8.39 samples/sec	Train-RPNAcc=0.969612,	RPNLogLoss=0.081493,	RPNL1Loss=0.063627,	FCISAcc=0.906632,	FCISAccFG=0.715983,	FCISLogLoss=0.229848,	FCISL1Loss=0.033851,	FCISMaskLoss=0.180547,	
+2017-10-25 13:35:12,951 Epoch[8] Batch [600]	Speed: 8.08 samples/sec	Train-RPNAcc=0.971639,	RPNLogLoss=0.076739,	RPNL1Loss=0.063230,	FCISAcc=0.909532,	FCISAccFG=0.728048,	FCISLogLoss=0.222851,	FCISL1Loss=0.032814,	FCISMaskLoss=0.174140,	
+2017-10-25 13:35:24,609 Epoch[8] Train-RPNAcc=0.972339
+2017-10-25 13:35:24,609 Epoch[8] Train-RPNLogLoss=0.074940
+2017-10-25 13:35:24,609 Epoch[8] Train-RPNL1Loss=0.062822
+2017-10-25 13:35:24,609 Epoch[8] Train-FCISAcc=0.910114
+2017-10-25 13:35:24,609 Epoch[8] Train-FCISAccFG=0.730611
+2017-10-25 13:35:24,609 Epoch[8] Train-FCISLogLoss=0.220721
+2017-10-25 13:35:24,609 Epoch[8] Train-FCISL1Loss=0.032263
+2017-10-25 13:35:24,609 Epoch[8] Train-FCISMaskLoss=0.171695
+2017-10-25 13:35:24,609 Epoch[8] Time cost=154.926
+2017-10-25 13:35:25,158 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0009.params"
+2017-10-25 13:35:48,919 Epoch[9] Batch [100]	Speed: 8.54 samples/sec	Train-RPNAcc=0.976369,	RPNLogLoss=0.064911,	RPNL1Loss=0.054792,	FCISAcc=0.909499,	FCISAccFG=0.729515,	FCISLogLoss=0.222963,	FCISL1Loss=0.030828,	FCISMaskLoss=0.165906,	
+2017-10-25 13:36:12,454 Epoch[9] Batch [200]	Speed: 8.50 samples/sec	Train-RPNAcc=0.976028,	RPNLogLoss=0.066095,	RPNL1Loss=0.057392,	FCISAcc=0.908874,	FCISAccFG=0.729268,	FCISLogLoss=0.221917,	FCISL1Loss=0.031507,	FCISMaskLoss=0.168236,	
+2017-10-25 13:36:36,120 Epoch[9] Batch [300]	Speed: 8.45 samples/sec	Train-RPNAcc=0.973500,	RPNLogLoss=0.071556,	RPNL1Loss=0.059767,	FCISAcc=0.909754,	FCISAccFG=0.731926,	FCISLogLoss=0.221959,	FCISL1Loss=0.031401,	FCISMaskLoss=0.169382,	
+2017-10-25 13:36:59,972 Epoch[9] Batch [400]	Speed: 8.39 samples/sec	Train-RPNAcc=0.973791,	RPNLogLoss=0.070194,	RPNL1Loss=0.058263,	FCISAcc=0.911062,	FCISAccFG=0.738195,	FCISLogLoss=0.218837,	FCISL1Loss=0.030693,	FCISMaskLoss=0.167147,	
+2017-10-25 13:37:23,734 Epoch[9] Batch [500]	Speed: 8.42 samples/sec	Train-RPNAcc=0.973771,	RPNLogLoss=0.070015,	RPNL1Loss=0.057970,	FCISAcc=0.911045,	FCISAccFG=0.736831,	FCISLogLoss=0.219914,	FCISL1Loss=0.031016,	FCISMaskLoss=0.170228,	
+2017-10-25 13:37:49,209 Epoch[9] Batch [600]	Speed: 7.85 samples/sec	Train-RPNAcc=0.975477,	RPNLogLoss=0.066320,	RPNL1Loss=0.057583,	FCISAcc=0.913315,	FCISAccFG=0.745359,	FCISLogLoss=0.213552,	FCISL1Loss=0.029963,	FCISMaskLoss=0.165744,	
+2017-10-25 13:38:00,300 Epoch[9] Train-RPNAcc=0.975897
+2017-10-25 13:38:00,300 Epoch[9] Train-RPNLogLoss=0.065327
+2017-10-25 13:38:00,300 Epoch[9] Train-RPNL1Loss=0.058091
+2017-10-25 13:38:00,300 Epoch[9] Train-FCISAcc=0.913772
+2017-10-25 13:38:00,300 Epoch[9] Train-FCISAccFG=0.747969
+2017-10-25 13:38:00,300 Epoch[9] Train-FCISLogLoss=0.212392
+2017-10-25 13:38:00,300 Epoch[9] Train-FCISL1Loss=0.029926
+2017-10-25 13:38:00,300 Epoch[9] Train-FCISMaskLoss=0.164655
+2017-10-25 13:38:00,300 Epoch[9] Time cost=155.142
+2017-10-25 13:38:00,802 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0010.params"
+2017-10-25 13:38:24,424 Epoch[10] Batch [100]	Speed: 8.59 samples/sec	Train-RPNAcc=0.968537,	RPNLogLoss=0.078696,	RPNL1Loss=0.058046,	FCISAcc=0.910736,	FCISAccFG=0.723623,	FCISLogLoss=0.216537,	FCISL1Loss=0.031168,	FCISMaskLoss=0.184983,	
+2017-10-25 13:38:48,090 Epoch[10] Batch [200]	Speed: 8.45 samples/sec	Train-RPNAcc=0.973521,	RPNLogLoss=0.069105,	RPNL1Loss=0.056898,	FCISAcc=0.915695,	FCISAccFG=0.750179,	FCISLogLoss=0.204657,	FCISL1Loss=0.029098,	FCISMaskLoss=0.167994,	
+2017-10-25 13:39:11,474 Epoch[10] Batch [300]	Speed: 8.55 samples/sec	Train-RPNAcc=0.974752,	RPNLogLoss=0.066689,	RPNL1Loss=0.054294,	FCISAcc=0.916022,	FCISAccFG=0.753418,	FCISLogLoss=0.205372,	FCISL1Loss=0.029183,	FCISMaskLoss=0.167722,	
+2017-10-25 13:39:34,891 Epoch[10] Batch [400]	Speed: 8.54 samples/sec	Train-RPNAcc=0.975418,	RPNLogLoss=0.065170,	RPNL1Loss=0.053443,	FCISAcc=0.915046,	FCISAccFG=0.751999,	FCISLogLoss=0.206351,	FCISL1Loss=0.029570,	FCISMaskLoss=0.167110,	
+2017-10-25 13:39:58,502 Epoch[10] Batch [500]	Speed: 8.47 samples/sec	Train-RPNAcc=0.975869,	RPNLogLoss=0.063904,	RPNL1Loss=0.054644,	FCISAcc=0.915614,	FCISAccFG=0.752734,	FCISLogLoss=0.205433,	FCISL1Loss=0.029565,	FCISMaskLoss=0.167138,	
+2017-10-25 13:40:23,932 Epoch[10] Batch [600]	Speed: 7.86 samples/sec	Train-RPNAcc=0.977112,	RPNLogLoss=0.060993,	RPNL1Loss=0.055171,	FCISAcc=0.918014,	FCISAccFG=0.760967,	FCISLogLoss=0.199848,	FCISL1Loss=0.028651,	FCISMaskLoss=0.162669,	
+2017-10-25 13:40:34,840 Epoch[10] Train-RPNAcc=0.977772
+2017-10-25 13:40:34,840 Epoch[10] Train-RPNLogLoss=0.059537
+2017-10-25 13:40:34,840 Epoch[10] Train-RPNL1Loss=0.055292
+2017-10-25 13:40:34,840 Epoch[10] Train-FCISAcc=0.918610
+2017-10-25 13:40:34,840 Epoch[10] Train-FCISAccFG=0.764545
+2017-10-25 13:40:34,840 Epoch[10] Train-FCISLogLoss=0.197831
+2017-10-25 13:40:34,840 Epoch[10] Train-FCISL1Loss=0.028226
+2017-10-25 13:40:34,840 Epoch[10] Train-FCISMaskLoss=0.159667
+2017-10-25 13:40:34,841 Epoch[10] Time cost=154.038
+2017-10-25 13:40:35,344 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0011.params"
+2017-10-25 13:40:59,137 Epoch[11] Batch [100]	Speed: 8.52 samples/sec	Train-RPNAcc=0.977897,	RPNLogLoss=0.058931,	RPNL1Loss=0.049302,	FCISAcc=0.917118,	FCISAccFG=0.764614,	FCISLogLoss=0.201438,	FCISL1Loss=0.028068,	FCISMaskLoss=0.158584,	
+2017-10-25 13:41:22,770 Epoch[11] Batch [200]	Speed: 8.46 samples/sec	Train-RPNAcc=0.978030,	RPNLogLoss=0.057645,	RPNL1Loss=0.052335,	FCISAcc=0.913596,	FCISAccFG=0.760235,	FCISLogLoss=0.209613,	FCISL1Loss=0.029931,	FCISMaskLoss=0.159103,	
+2017-10-25 13:41:46,497 Epoch[11] Batch [300]	Speed: 8.43 samples/sec	Train-RPNAcc=0.977231,	RPNLogLoss=0.059308,	RPNL1Loss=0.052136,	FCISAcc=0.914698,	FCISAccFG=0.759111,	FCISLogLoss=0.208734,	FCISL1Loss=0.029588,	FCISMaskLoss=0.158836,	
+2017-10-25 13:42:10,256 Epoch[11] Batch [400]	Speed: 8.42 samples/sec	Train-RPNAcc=0.977702,	RPNLogLoss=0.059285,	RPNL1Loss=0.052042,	FCISAcc=0.915485,	FCISAccFG=0.759662,	FCISLogLoss=0.207958,	FCISL1Loss=0.029373,	FCISMaskLoss=0.161026,	
+2017-10-25 13:42:33,836 Epoch[11] Batch [500]	Speed: 8.48 samples/sec	Train-RPNAcc=0.978566,	RPNLogLoss=0.057836,	RPNL1Loss=0.051429,	FCISAcc=0.915575,	FCISAccFG=0.759430,	FCISLogLoss=0.207546,	FCISL1Loss=0.029352,	FCISMaskLoss=0.161938,	
+2017-10-25 13:42:58,670 Epoch[11] Batch [600]	Speed: 8.05 samples/sec	Train-RPNAcc=0.979094,	RPNLogLoss=0.056693,	RPNL1Loss=0.052457,	FCISAcc=0.916207,	FCISAccFG=0.763688,	FCISLogLoss=0.205127,	FCISL1Loss=0.029313,	FCISMaskLoss=0.160991,	
+2017-10-25 13:43:10,141 Epoch[11] Train-RPNAcc=0.979544
+2017-10-25 13:43:10,142 Epoch[11] Train-RPNLogLoss=0.055651
+2017-10-25 13:43:10,142 Epoch[11] Train-RPNL1Loss=0.052764
+2017-10-25 13:43:10,142 Epoch[11] Train-FCISAcc=0.917497
+2017-10-25 13:43:10,142 Epoch[11] Train-FCISAccFG=0.767987
+2017-10-25 13:43:10,142 Epoch[11] Train-FCISLogLoss=0.201919
+2017-10-25 13:43:10,142 Epoch[11] Train-FCISL1Loss=0.028779
+2017-10-25 13:43:10,142 Epoch[11] Train-FCISMaskLoss=0.158523
+2017-10-25 13:43:10,142 Epoch[11] Time cost=154.798
+2017-10-25 13:43:10,641 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0012.params"
+2017-10-25 13:43:34,535 Epoch[12] Batch [100]	Speed: 8.48 samples/sec	Train-RPNAcc=0.980797,	RPNLogLoss=0.054099,	RPNL1Loss=0.048461,	FCISAcc=0.921836,	FCISAccFG=0.761531,	FCISLogLoss=0.193815,	FCISL1Loss=0.027443,	FCISMaskLoss=0.171801,	
+2017-10-25 13:43:58,190 Epoch[12] Batch [200]	Speed: 8.45 samples/sec	Train-RPNAcc=0.979361,	RPNLogLoss=0.056572,	RPNL1Loss=0.047984,	FCISAcc=0.919660,	FCISAccFG=0.760901,	FCISLogLoss=0.197938,	FCISL1Loss=0.028468,	FCISMaskLoss=0.171145,	
+2017-10-25 13:44:21,683 Epoch[12] Batch [300]	Speed: 8.51 samples/sec	Train-RPNAcc=0.980397,	RPNLogLoss=0.053766,	RPNL1Loss=0.048619,	FCISAcc=0.920928,	FCISAccFG=0.770580,	FCISLogLoss=0.194928,	FCISL1Loss=0.027639,	FCISMaskLoss=0.163526,	
+2017-10-25 13:44:45,316 Epoch[12] Batch [400]	Speed: 8.46 samples/sec	Train-RPNAcc=0.980542,	RPNLogLoss=0.053099,	RPNL1Loss=0.048431,	FCISAcc=0.921086,	FCISAccFG=0.773182,	FCISLogLoss=0.194139,	FCISL1Loss=0.026996,	FCISMaskLoss=0.158939,	
+2017-10-25 13:45:08,615 Epoch[12] Batch [500]	Speed: 8.58 samples/sec	Train-RPNAcc=0.980492,	RPNLogLoss=0.053210,	RPNL1Loss=0.050055,	FCISAcc=0.921243,	FCISAccFG=0.773498,	FCISLogLoss=0.194562,	FCISL1Loss=0.027024,	FCISMaskLoss=0.158050,	
+2017-10-25 13:45:32,791 Epoch[12] Batch [600]	Speed: 8.27 samples/sec	Train-RPNAcc=0.981782,	RPNLogLoss=0.049985,	RPNL1Loss=0.050661,	FCISAcc=0.923019,	FCISAccFG=0.782668,	FCISLogLoss=0.189736,	FCISL1Loss=0.026253,	FCISMaskLoss=0.152389,	
+2017-10-25 13:45:44,517 Epoch[12] Train-RPNAcc=0.981802
+2017-10-25 13:45:44,517 Epoch[12] Train-RPNLogLoss=0.050194
+2017-10-25 13:45:44,518 Epoch[12] Train-RPNL1Loss=0.050930
+2017-10-25 13:45:44,518 Epoch[12] Train-FCISAcc=0.923223
+2017-10-25 13:45:44,518 Epoch[12] Train-FCISAccFG=0.783268
+2017-10-25 13:45:44,518 Epoch[12] Train-FCISLogLoss=0.189270
+2017-10-25 13:45:44,518 Epoch[12] Train-FCISL1Loss=0.026241
+2017-10-25 13:45:44,518 Epoch[12] Train-FCISMaskLoss=0.152514
+2017-10-25 13:45:44,518 Epoch[12] Time cost=153.877
+2017-10-25 13:45:45,044 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0013.params"
+2017-10-25 13:46:08,712 Epoch[13] Batch [100]	Speed: 8.55 samples/sec	Train-RPNAcc=0.977626,	RPNLogLoss=0.058635,	RPNL1Loss=0.055030,	FCISAcc=0.914681,	FCISAccFG=0.752579,	FCISLogLoss=0.207424,	FCISL1Loss=0.028730,	FCISMaskLoss=0.159540,	
+2017-10-25 13:46:31,520 Epoch[13] Batch [200]	Speed: 8.77 samples/sec	Train-RPNAcc=0.979497,	RPNLogLoss=0.054381,	RPNL1Loss=0.050311,	FCISAcc=0.918260,	FCISAccFG=0.771139,	FCISLogLoss=0.199658,	FCISL1Loss=0.027542,	FCISMaskLoss=0.154078,	
+2017-10-25 13:46:54,174 Epoch[13] Batch [300]	Speed: 8.83 samples/sec	Train-RPNAcc=0.981513,	RPNLogLoss=0.050302,	RPNL1Loss=0.048182,	FCISAcc=0.919318,	FCISAccFG=0.775463,	FCISLogLoss=0.198765,	FCISL1Loss=0.027346,	FCISMaskLoss=0.153119,	
+2017-10-25 13:47:17,631 Epoch[13] Batch [400]	Speed: 8.53 samples/sec	Train-RPNAcc=0.981102,	RPNLogLoss=0.050866,	RPNL1Loss=0.048981,	FCISAcc=0.918427,	FCISAccFG=0.772051,	FCISLogLoss=0.200568,	FCISL1Loss=0.027625,	FCISMaskLoss=0.154023,	
+2017-10-25 13:47:41,192 Epoch[13] Batch [500]	Speed: 8.49 samples/sec	Train-RPNAcc=0.981361,	RPNLogLoss=0.050589,	RPNL1Loss=0.047997,	FCISAcc=0.918265,	FCISAccFG=0.770584,	FCISLogLoss=0.200875,	FCISL1Loss=0.027835,	FCISMaskLoss=0.155163,	
+2017-10-25 13:48:06,401 Epoch[13] Batch [600]	Speed: 7.93 samples/sec	Train-RPNAcc=0.982406,	RPNLogLoss=0.047861,	RPNL1Loss=0.047919,	FCISAcc=0.920387,	FCISAccFG=0.779571,	FCISLogLoss=0.194894,	FCISL1Loss=0.026729,	FCISMaskLoss=0.150095,	
+2017-10-25 13:48:17,492 Epoch[13] Train-RPNAcc=0.983108
+2017-10-25 13:48:17,493 Epoch[13] Train-RPNLogLoss=0.046207
+2017-10-25 13:48:17,493 Epoch[13] Train-RPNL1Loss=0.047741
+2017-10-25 13:48:17,493 Epoch[13] Train-FCISAcc=0.921627
+2017-10-25 13:48:17,493 Epoch[13] Train-FCISAccFG=0.783879
+2017-10-25 13:48:17,493 Epoch[13] Train-FCISLogLoss=0.191518
+2017-10-25 13:48:17,493 Epoch[13] Train-FCISL1Loss=0.026155
+2017-10-25 13:48:17,493 Epoch[13] Train-FCISMaskLoss=0.147670
+2017-10-25 13:48:17,493 Epoch[13] Time cost=152.448
+2017-10-25 13:48:18,029 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0014.params"
+2017-10-25 13:48:18,227 Update[9045]: Change learning rate to 2.00000e-05
+2017-10-25 13:48:41,325 Epoch[14] Batch [100]	Speed: 8.70 samples/sec	Train-RPNAcc=0.982886,	RPNLogLoss=0.046348,	RPNL1Loss=0.047466,	FCISAcc=0.925936,	FCISAccFG=0.794753,	FCISLogLoss=0.184970,	FCISL1Loss=0.024577,	FCISMaskLoss=0.144679,	
+2017-10-25 13:49:04,742 Epoch[14] Batch [200]	Speed: 8.54 samples/sec	Train-RPNAcc=0.984103,	RPNLogLoss=0.043756,	RPNL1Loss=0.042908,	FCISAcc=0.925762,	FCISAccFG=0.793830,	FCISLogLoss=0.184726,	FCISL1Loss=0.023603,	FCISMaskLoss=0.145867,	
+2017-10-25 13:49:27,660 Epoch[14] Batch [300]	Speed: 8.73 samples/sec	Train-RPNAcc=0.985673,	RPNLogLoss=0.040057,	RPNL1Loss=0.040937,	FCISAcc=0.927157,	FCISAccFG=0.797938,	FCISLogLoss=0.182064,	FCISL1Loss=0.022909,	FCISMaskLoss=0.141126,	
+2017-10-25 13:49:50,873 Epoch[14] Batch [400]	Speed: 8.62 samples/sec	Train-RPNAcc=0.985529,	RPNLogLoss=0.040142,	RPNL1Loss=0.039043,	FCISAcc=0.927126,	FCISAccFG=0.797536,	FCISLogLoss=0.181418,	FCISL1Loss=0.022954,	FCISMaskLoss=0.141989,	
+2017-10-25 13:50:14,465 Epoch[14] Batch [500]	Speed: 8.48 samples/sec	Train-RPNAcc=0.985580,	RPNLogLoss=0.040461,	RPNL1Loss=0.039403,	FCISAcc=0.925274,	FCISAccFG=0.792409,	FCISLogLoss=0.185288,	FCISL1Loss=0.023839,	FCISMaskLoss=0.144874,	
+2017-10-25 13:50:39,422 Epoch[14] Batch [600]	Speed: 8.01 samples/sec	Train-RPNAcc=0.986777,	RPNLogLoss=0.037492,	RPNL1Loss=0.039055,	FCISAcc=0.927822,	FCISAccFG=0.802613,	FCISLogLoss=0.178892,	FCISL1Loss=0.022836,	FCISMaskLoss=0.140248,	
+2017-10-25 13:50:50,417 Epoch[14] Train-RPNAcc=0.987281
+2017-10-25 13:50:50,417 Epoch[14] Train-RPNLogLoss=0.036232
+2017-10-25 13:50:50,417 Epoch[14] Train-RPNL1Loss=0.038170
+2017-10-25 13:50:50,417 Epoch[14] Train-FCISAcc=0.929004
+2017-10-25 13:50:50,417 Epoch[14] Train-FCISAccFG=0.806937
+2017-10-25 13:50:50,417 Epoch[14] Train-FCISLogLoss=0.175747
+2017-10-25 13:50:50,417 Epoch[14] Train-FCISL1Loss=0.022327
+2017-10-25 13:50:50,417 Epoch[14] Train-FCISMaskLoss=0.137871
+2017-10-25 13:50:50,417 Epoch[14] Time cost=152.387
+2017-10-25 13:50:50,917 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0015.params"
+2017-10-25 13:51:14,501 Epoch[15] Batch [100]	Speed: 8.58 samples/sec	Train-RPNAcc=0.986483,	RPNLogLoss=0.037319,	RPNL1Loss=0.039501,	FCISAcc=0.926091,	FCISAccFG=0.800535,	FCISLogLoss=0.176660,	FCISL1Loss=0.021876,	FCISMaskLoss=0.138237,	
+2017-10-25 13:51:37,538 Epoch[15] Batch [200]	Speed: 8.68 samples/sec	Train-RPNAcc=0.987348,	RPNLogLoss=0.035292,	RPNL1Loss=0.035216,	FCISAcc=0.926520,	FCISAccFG=0.803595,	FCISLogLoss=0.179221,	FCISL1Loss=0.022923,	FCISMaskLoss=0.139332,	
+2017-10-25 13:52:00,690 Epoch[15] Batch [300]	Speed: 8.64 samples/sec	Train-RPNAcc=0.987788,	RPNLogLoss=0.034268,	RPNL1Loss=0.034275,	FCISAcc=0.927287,	FCISAccFG=0.806441,	FCISLogLoss=0.178227,	FCISL1Loss=0.022960,	FCISMaskLoss=0.139837,	
+2017-10-25 13:52:23,752 Epoch[15] Batch [400]	Speed: 8.67 samples/sec	Train-RPNAcc=0.987775,	RPNLogLoss=0.034749,	RPNL1Loss=0.034798,	FCISAcc=0.927087,	FCISAccFG=0.806998,	FCISLogLoss=0.178064,	FCISL1Loss=0.022621,	FCISMaskLoss=0.138701,	
+2017-10-25 13:52:46,649 Epoch[15] Batch [500]	Speed: 8.73 samples/sec	Train-RPNAcc=0.987307,	RPNLogLoss=0.035678,	RPNL1Loss=0.035797,	FCISAcc=0.927146,	FCISAccFG=0.805370,	FCISLogLoss=0.178345,	FCISL1Loss=0.022809,	FCISMaskLoss=0.140341,	
+2017-10-25 13:53:11,819 Epoch[15] Batch [600]	Speed: 7.95 samples/sec	Train-RPNAcc=0.988106,	RPNLogLoss=0.033670,	RPNL1Loss=0.035525,	FCISAcc=0.929259,	FCISAccFG=0.812546,	FCISLogLoss=0.172824,	FCISL1Loss=0.021993,	FCISMaskLoss=0.135622,	
+2017-10-25 13:53:22,677 Epoch[15] Train-RPNAcc=0.988508
+2017-10-25 13:53:22,678 Epoch[15] Train-RPNLogLoss=0.032680
+2017-10-25 13:53:22,678 Epoch[15] Train-RPNL1Loss=0.035161
+2017-10-25 13:53:22,678 Epoch[15] Train-FCISAcc=0.930226
+2017-10-25 13:53:22,678 Epoch[15] Train-FCISAccFG=0.816290
+2017-10-25 13:53:22,678 Epoch[15] Train-FCISLogLoss=0.170327
+2017-10-25 13:53:22,678 Epoch[15] Train-FCISL1Loss=0.021658
+2017-10-25 13:53:22,678 Epoch[15] Train-FCISMaskLoss=0.134027
+2017-10-25 13:53:22,678 Epoch[15] Time cost=151.760
+2017-10-25 13:53:23,142 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0016.params"
+2017-10-25 13:53:46,783 Epoch[16] Batch [100]	Speed: 8.57 samples/sec	Train-RPNAcc=0.987740,	RPNLogLoss=0.034944,	RPNL1Loss=0.034661,	FCISAcc=0.928875,	FCISAccFG=0.805697,	FCISLogLoss=0.174260,	FCISL1Loss=0.022189,	FCISMaskLoss=0.141031,	
+2017-10-25 13:54:10,180 Epoch[16] Batch [200]	Speed: 8.55 samples/sec	Train-RPNAcc=0.988077,	RPNLogLoss=0.034058,	RPNL1Loss=0.034680,	FCISAcc=0.927627,	FCISAccFG=0.804304,	FCISLogLoss=0.176775,	FCISL1Loss=0.022641,	FCISMaskLoss=0.141653,	
+2017-10-25 13:54:33,130 Epoch[16] Batch [300]	Speed: 8.71 samples/sec	Train-RPNAcc=0.988554,	RPNLogLoss=0.033021,	RPNL1Loss=0.033522,	FCISAcc=0.928312,	FCISAccFG=0.808150,	FCISLogLoss=0.174277,	FCISL1Loss=0.021848,	FCISMaskLoss=0.138870,	
+2017-10-25 13:54:55,795 Epoch[16] Batch [400]	Speed: 8.82 samples/sec	Train-RPNAcc=0.988671,	RPNLogLoss=0.032710,	RPNL1Loss=0.034914,	FCISAcc=0.927944,	FCISAccFG=0.808675,	FCISLogLoss=0.174989,	FCISL1Loss=0.021896,	FCISMaskLoss=0.137940,	
+2017-10-25 13:55:19,302 Epoch[16] Batch [500]	Speed: 8.51 samples/sec	Train-RPNAcc=0.988071,	RPNLogLoss=0.033527,	RPNL1Loss=0.034616,	FCISAcc=0.927294,	FCISAccFG=0.806116,	FCISLogLoss=0.177023,	FCISL1Loss=0.022372,	FCISMaskLoss=0.139229,	
+2017-10-25 13:55:44,327 Epoch[16] Batch [600]	Speed: 7.99 samples/sec	Train-RPNAcc=0.988798,	RPNLogLoss=0.031737,	RPNL1Loss=0.034786,	FCISAcc=0.929772,	FCISAccFG=0.815244,	FCISLogLoss=0.170801,	FCISL1Loss=0.021446,	FCISMaskLoss=0.133936,	
+2017-10-25 13:55:54,939 Epoch[16] Train-RPNAcc=0.989164
+2017-10-25 13:55:54,939 Epoch[16] Train-RPNLogLoss=0.030856
+2017-10-25 13:55:54,939 Epoch[16] Train-RPNL1Loss=0.034350
+2017-10-25 13:55:54,939 Epoch[16] Train-FCISAcc=0.930437
+2017-10-25 13:55:54,939 Epoch[16] Train-FCISAccFG=0.818127
+2017-10-25 13:55:54,939 Epoch[16] Train-FCISLogLoss=0.169065
+2017-10-25 13:55:54,939 Epoch[16] Train-FCISL1Loss=0.021275
+2017-10-25 13:55:54,939 Epoch[16] Train-FCISMaskLoss=0.132913
+2017-10-25 13:55:54,939 Epoch[16] Time cost=151.796
+2017-10-25 13:55:55,428 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0017.params"
+2017-10-25 13:56:19,217 Epoch[17] Batch [100]	Speed: 8.53 samples/sec	Train-RPNAcc=0.986231,	RPNLogLoss=0.038357,	RPNL1Loss=0.038395,	FCISAcc=0.926439,	FCISAccFG=0.806661,	FCISLogLoss=0.180642,	FCISL1Loss=0.022235,	FCISMaskLoss=0.136011,	
+2017-10-25 13:56:42,016 Epoch[17] Batch [200]	Speed: 8.77 samples/sec	Train-RPNAcc=0.987378,	RPNLogLoss=0.034856,	RPNL1Loss=0.036442,	FCISAcc=0.927900,	FCISAccFG=0.810440,	FCISLogLoss=0.175677,	FCISL1Loss=0.021749,	FCISMaskLoss=0.136866,	
+2017-10-25 13:57:05,338 Epoch[17] Batch [300]	Speed: 8.58 samples/sec	Train-RPNAcc=0.987503,	RPNLogLoss=0.034610,	RPNL1Loss=0.035983,	FCISAcc=0.928766,	FCISAccFG=0.813619,	FCISLogLoss=0.173805,	FCISL1Loss=0.022081,	FCISMaskLoss=0.136454,	
+2017-10-25 13:57:31,651 Epoch[17] Batch [400]	Speed: 7.60 samples/sec	Train-RPNAcc=0.987633,	RPNLogLoss=0.034070,	RPNL1Loss=0.035630,	FCISAcc=0.928343,	FCISAccFG=0.811059,	FCISLogLoss=0.174592,	FCISL1Loss=0.022149,	FCISMaskLoss=0.136916,	
+2017-10-25 13:57:55,213 Epoch[17] Batch [500]	Speed: 8.49 samples/sec	Train-RPNAcc=0.987895,	RPNLogLoss=0.033539,	RPNL1Loss=0.034311,	FCISAcc=0.928596,	FCISAccFG=0.811992,	FCISLogLoss=0.172868,	FCISL1Loss=0.022201,	FCISMaskLoss=0.137038,	
+2017-10-25 13:58:24,292 Epoch[17] Batch [600]	Speed: 6.88 samples/sec	Train-RPNAcc=0.988548,	RPNLogLoss=0.031950,	RPNL1Loss=0.033640,	FCISAcc=0.930123,	FCISAccFG=0.818849,	FCISLogLoss=0.168921,	FCISL1Loss=0.021604,	FCISMaskLoss=0.133967,	
+2017-10-25 13:58:35,177 Epoch[17] Train-RPNAcc=0.989016
+2017-10-25 13:58:35,177 Epoch[17] Train-RPNLogLoss=0.030791
+2017-10-25 13:58:35,177 Epoch[17] Train-RPNL1Loss=0.034055
+2017-10-25 13:58:35,177 Epoch[17] Train-FCISAcc=0.931314
+2017-10-25 13:58:35,177 Epoch[17] Train-FCISAccFG=0.822652
+2017-10-25 13:58:35,177 Epoch[17] Train-FCISLogLoss=0.166193
+2017-10-25 13:58:35,177 Epoch[17] Train-FCISL1Loss=0.021151
+2017-10-25 13:58:35,177 Epoch[17] Train-FCISMaskLoss=0.131815
+2017-10-25 13:58:35,177 Epoch[17] Time cost=159.748
+2017-10-25 13:58:35,966 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0018.params"
+2017-10-25 13:59:00,411 Epoch[18] Batch [100]	Speed: 8.39 samples/sec	Train-RPNAcc=0.988823,	RPNLogLoss=0.031151,	RPNL1Loss=0.033466,	FCISAcc=0.929455,	FCISAccFG=0.817986,	FCISLogLoss=0.173575,	FCISL1Loss=0.022696,	FCISMaskLoss=0.138925,	
+2017-10-25 13:59:25,031 Epoch[18] Batch [200]	Speed: 8.12 samples/sec	Train-RPNAcc=0.988145,	RPNLogLoss=0.032118,	RPNL1Loss=0.034361,	FCISAcc=0.931048,	FCISAccFG=0.820967,	FCISLogLoss=0.170377,	FCISL1Loss=0.021519,	FCISMaskLoss=0.134514,	
+2017-10-25 13:59:48,643 Epoch[18] Batch [300]	Speed: 8.47 samples/sec	Train-RPNAcc=0.988190,	RPNLogLoss=0.031996,	RPNL1Loss=0.034067,	FCISAcc=0.929921,	FCISAccFG=0.815258,	FCISLogLoss=0.171909,	FCISL1Loss=0.021855,	FCISMaskLoss=0.136787,	
+2017-10-25 14:00:12,770 Epoch[18] Batch [400]	Speed: 8.29 samples/sec	Train-RPNAcc=0.988145,	RPNLogLoss=0.032529,	RPNL1Loss=0.033599,	FCISAcc=0.930067,	FCISAccFG=0.815680,	FCISLogLoss=0.172884,	FCISL1Loss=0.022371,	FCISMaskLoss=0.137725,	
+2017-10-25 14:00:39,318 Epoch[18] Batch [500]	Speed: 7.53 samples/sec	Train-RPNAcc=0.988258,	RPNLogLoss=0.032427,	RPNL1Loss=0.033908,	FCISAcc=0.929726,	FCISAccFG=0.815404,	FCISLogLoss=0.173002,	FCISL1Loss=0.022215,	FCISMaskLoss=0.137275,	
+2017-10-25 14:01:10,377 Epoch[18] Batch [600]	Speed: 6.44 samples/sec	Train-RPNAcc=0.988970,	RPNLogLoss=0.030489,	RPNL1Loss=0.033450,	FCISAcc=0.931722,	FCISAccFG=0.823034,	FCISLogLoss=0.167750,	FCISL1Loss=0.021361,	FCISMaskLoss=0.132785,	
+2017-10-25 14:01:20,897 Epoch[18] Train-RPNAcc=0.989342
+2017-10-25 14:01:20,897 Epoch[18] Train-RPNLogLoss=0.029668
+2017-10-25 14:01:20,897 Epoch[18] Train-RPNL1Loss=0.033434
+2017-10-25 14:01:20,897 Epoch[18] Train-FCISAcc=0.932536
+2017-10-25 14:01:20,897 Epoch[18] Train-FCISAccFG=0.825667
+2017-10-25 14:01:20,897 Epoch[18] Train-FCISLogLoss=0.165598
+2017-10-25 14:01:20,897 Epoch[18] Train-FCISL1Loss=0.021053
+2017-10-25 14:01:20,897 Epoch[18] Train-FCISMaskLoss=0.131494
+2017-10-25 14:01:20,897 Epoch[18] Time cost=164.930
+2017-10-25 14:01:21,986 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0019.params"
+2017-10-25 14:01:45,558 Epoch[19] Batch [100]	Speed: 8.66 samples/sec	Train-RPNAcc=0.987894,	RPNLogLoss=0.032660,	RPNL1Loss=0.031713,	FCISAcc=0.932163,	FCISAccFG=0.821844,	FCISLogLoss=0.166723,	FCISL1Loss=0.021300,	FCISMaskLoss=0.129224,	
+2017-10-25 14:02:09,559 Epoch[19] Batch [200]	Speed: 8.33 samples/sec	Train-RPNAcc=0.987105,	RPNLogLoss=0.034568,	RPNL1Loss=0.035671,	FCISAcc=0.930290,	FCISAccFG=0.818587,	FCISLogLoss=0.169159,	FCISL1Loss=0.021900,	FCISMaskLoss=0.138330,	
+2017-10-25 14:02:33,968 Epoch[19] Batch [300]	Speed: 8.19 samples/sec	Train-RPNAcc=0.987853,	RPNLogLoss=0.032647,	RPNL1Loss=0.033312,	FCISAcc=0.930440,	FCISAccFG=0.818177,	FCISLogLoss=0.168637,	FCISL1Loss=0.021909,	FCISMaskLoss=0.137287,	
+2017-10-25 14:03:00,392 Epoch[19] Batch [400]	Speed: 7.57 samples/sec	Train-RPNAcc=0.988038,	RPNLogLoss=0.032546,	RPNL1Loss=0.032621,	FCISAcc=0.929619,	FCISAccFG=0.815796,	FCISLogLoss=0.170336,	FCISL1Loss=0.021909,	FCISMaskLoss=0.135979,	
+2017-10-25 14:03:24,949 Epoch[19] Batch [500]	Speed: 8.14 samples/sec	Train-RPNAcc=0.988281,	RPNLogLoss=0.032223,	RPNL1Loss=0.033905,	FCISAcc=0.929586,	FCISAccFG=0.816535,	FCISLogLoss=0.170551,	FCISL1Loss=0.022003,	FCISMaskLoss=0.136444,	
+2017-10-25 14:03:50,363 Epoch[19] Batch [600]	Speed: 7.87 samples/sec	Train-RPNAcc=0.989074,	RPNLogLoss=0.030228,	RPNL1Loss=0.033344,	FCISAcc=0.931722,	FCISAccFG=0.824222,	FCISLogLoss=0.165494,	FCISL1Loss=0.021134,	FCISMaskLoss=0.132020,	
+2017-10-25 14:04:02,111 Epoch[19] Train-RPNAcc=0.989454
+2017-10-25 14:04:02,111 Epoch[19] Train-RPNLogLoss=0.029300
+2017-10-25 14:04:02,111 Epoch[19] Train-RPNL1Loss=0.033265
+2017-10-25 14:04:02,111 Epoch[19] Train-FCISAcc=0.932705
+2017-10-25 14:04:02,111 Epoch[19] Train-FCISAccFG=0.827568
+2017-10-25 14:04:02,111 Epoch[19] Train-FCISLogLoss=0.163077
+2017-10-25 14:04:02,111 Epoch[19] Train-FCISL1Loss=0.020841
+2017-10-25 14:04:02,111 Epoch[19] Train-FCISMaskLoss=0.130433
+2017-10-25 14:04:02,111 Epoch[19] Time cost=160.124
+2017-10-25 14:04:02,622 Saved checkpoint to "./output/fcis/ObjectSnap/resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002/XiaoCube_MagicLeapTrain/e2e-0020.params"
+2017-10-25 14:04:02,632 testing config:{'BINARY_THRESH': 0.4,
+ 'CLASS_AGNOSTIC': True,
+ 'MASK_SIZE': 21,
+ 'MXNET_VERSION': 'mxnet',
+ 'SCALES': [(600, 1000)],
+ 'TEST': {'BATCH_IMAGES': 1,
+          'CXX_PROPOSAL': False,
+          'HAS_RPN': True,
+          'ITER': 2,
+          'MASK_MERGE_THRESH': 0.5,
+          'MIN_DROP_SIZE': 16,
+          'NMS': 0.3,
+          'PROPOSAL_MIN_SIZE': 16,
+          'PROPOSAL_NMS_THRESH': 0.7,
+          'PROPOSAL_POST_NMS_TOP_N': 2000,
+          'PROPOSAL_PRE_NMS_TOP_N': 20000,
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'USE_GPU_MASK_MERGE': True,
+          'USE_MASK_MERGE': True,
+          'test_epoch': 20},
+ 'TRAIN': {'ASPECT_GROUPING': True,
+           'BATCH_IMAGES': 1,
+           'BATCH_ROIS': 128,
+           'BATCH_ROIS_OHEM': 128,
+           'BBOX_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZATION_PRECOMPUTED': True,
+           'BBOX_REGRESSION_THRESH': 0.5,
+           'BBOX_STDS': [0.2, 0.2, 0.5, 0.5],
+           'BBOX_WEIGHTS': array([ 1.,  1.,  1.,  1.]),
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.1,
+           'BINARY_THRESH': 0.4,
+           'CONVNEW3': True,
+           'CXX_PROPOSAL': False,
+           'ENABLE_OHEM': True,
+           'END2END': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'FLIP': True,
+           'GAP_SELECT_FROM_ALL': False,
+           'IGNORE_GAP': False,
+           'LOSS_WEIGHT': [1.0, 10.0, 1.0],
+           'RESUME': False,
+           'RPN_ALLOWED_BORDER': 0,
+           'RPN_BATCH_SIZE': 256,
+           'RPN_BBOX_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SHUFFLE': True,
+           'begin_epoch': 0,
+           'end_epoch': 20,
+           'lr': 0.0002,
+           'lr_step': '14',
+           'model_prefix': 'e2e',
+           'momentum': 0.9,
+           'warmup': True,
+           'warmup_lr': 5e-05,
+           'warmup_step': 4000,
+           'wd': 0.0005},
+ 'config_name': 'resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002',
+ 'dataset': {'NUM_CLASSES': 3,
+             'dataset': 'ObjectSnap',
+             'dataset_path': './data/ObjectSnap',
+             'image_set': 'XiaoCube_MagicLeapTrain',
+             'proposal': 'rpn',
+             'root_path': './data',
+             'test_image_set': 'XiaoCube_MagicLeapVal'},
+ 'default': {'frequent': 100, 'kvstore': 'device'},
+ 'gpus': '0,1',
+ 'network': {'ANCHOR_RATIOS': [0.5, 1, 2],
+             'ANCHOR_SCALES': [8, 16, 32],
+             'FIXED_PARAMS': ['conv1',
+                              'bn_conv1',
+                              'res2',
+                              'bn2',
+                              'gamma',
+                              'beta'],
+             'FIXED_PARAMS_SHARED': ['conv1',
+                                     'bn_conv1',
+                                     'res2',
+                                     'bn2',
+                                     'res3',
+                                     'bn3',
+                                     'res4',
+                                     'bn4',
+                                     'gamma',
+                                     'beta'],
+             'IMAGE_STRIDE': 0,
+             'NUM_ANCHORS': 9,
+             'PIXEL_MEANS': array([ 103.06,  115.9 ,  123.15]),
+             'RCNN_FEAT_STRIDE': 16,
+             'RPN_FEAT_STRIDE': 16,
+             'pretrained': './model/pretrained_model/ob_data',
+             'pretrained_epoch': 0},
+ 'output_path': './output/fcis/ObjectSnap',
+ 'symbol': 'resnet_v1_101_fcis'}
+
+2017-10-25 14:04:11,899 testing 2/516 data 0.2988s net 0.1540s post 0.0169s
+2017-10-25 14:04:12,050 testing 4/516 data 0.0002s net 0.1388s post 0.0114s
+2017-10-25 14:04:12,176 testing 6/516 data 0.0002s net 0.1078s post 0.0181s
+2017-10-25 14:04:12,326 testing 8/516 data 0.0002s net 0.1149s post 0.0346s
+2017-10-25 14:04:12,455 testing 10/516 data 0.0002s net 0.1016s post 0.0280s
+2017-10-25 14:04:12,564 testing 12/516 data 0.0002s net 0.1027s post 0.0053s
+2017-10-25 14:04:12,673 testing 14/516 data 0.0002s net 0.0958s post 0.0131s
+2017-10-25 14:04:12,817 testing 16/516 data 0.0002s net 0.1203s post 0.0238s
+2017-10-25 14:04:12,983 testing 18/516 data 0.0003s net 0.1391s post 0.0268s
+2017-10-25 14:04:13,116 testing 20/516 data 0.0002s net 0.1056s post 0.0271s
+2017-10-25 14:04:13,286 testing 22/516 data 0.0002s net 0.1236s post 0.0464s
+2017-10-25 14:04:13,416 testing 24/516 data 0.0002s net 0.1127s post 0.0168s
+2017-10-25 14:04:13,539 testing 26/516 data 0.0002s net 0.1039s post 0.0193s
+2017-10-25 14:04:13,605 testing 28/516 data 0.0002s net 0.0525s post 0.0130s
+2017-10-25 14:04:13,694 testing 30/516 data 0.0002s net 0.0622s post 0.0262s
+2017-10-25 14:04:13,777 testing 32/516 data 0.0002s net 0.0587s post 0.0239s
+2017-10-25 14:04:13,851 testing 34/516 data 0.0002s net 0.0604s post 0.0142s
+2017-10-25 14:04:13,935 testing 36/516 data 0.0002s net 0.0564s post 0.0273s
+2017-10-25 14:04:14,017 testing 38/516 data 0.0002s net 0.0559s post 0.0252s
+2017-10-25 14:04:14,170 testing 40/516 data 0.0002s net 0.1018s post 0.0509s
+2017-10-25 14:04:14,283 testing 42/516 data 0.0002s net 0.1023s post 0.0113s
+2017-10-25 14:04:14,354 testing 44/516 data 0.0002s net 0.0555s post 0.0146s
+2017-10-25 14:04:14,464 testing 46/516 data 0.0002s net 0.0944s post 0.0157s
+2017-10-25 14:04:14,592 testing 48/516 data 0.0002s net 0.0998s post 0.0278s
+2017-10-25 14:04:14,723 testing 50/516 data 0.0002s net 0.0986s post 0.0322s
+2017-10-25 14:04:14,848 testing 52/516 data 0.0003s net 0.1062s post 0.0190s
+2017-10-25 14:04:14,994 testing 54/516 data 0.0002s net 0.1171s post 0.0281s
+2017-10-25 14:04:15,139 testing 56/516 data 0.0002s net 0.1105s post 0.0349s
+2017-10-25 14:04:15,278 testing 58/516 data 0.0003s net 0.1148s post 0.0239s
+2017-10-25 14:04:15,430 testing 60/516 data 0.0002s net 0.1186s post 0.0331s
+2017-10-25 14:04:15,568 testing 62/516 data 0.0002s net 0.1111s post 0.0265s
+2017-10-25 14:04:15,699 testing 64/516 data 0.0002s net 0.0988s post 0.0322s
+2017-10-25 14:04:15,820 testing 66/516 data 0.0002s net 0.0964s post 0.0239s
+2017-10-25 14:04:15,960 testing 68/516 data 0.0002s net 0.1016s post 0.0390s
+2017-10-25 14:04:16,117 testing 70/516 data 0.0002s net 0.1203s post 0.0366s
+2017-10-25 14:04:16,246 testing 72/516 data 0.0002s net 0.1047s post 0.0236s
+2017-10-25 14:04:16,396 testing 74/516 data 0.0002s net 0.1168s post 0.0334s
+2017-10-25 14:04:16,536 testing 76/516 data 0.0002s net 0.1059s post 0.0331s
+2017-10-25 14:04:16,694 testing 78/516 data 0.0002s net 0.1272s post 0.0307s
+2017-10-25 14:04:16,850 testing 80/516 data 0.0002s net 0.1137s post 0.0423s
+2017-10-25 14:04:16,991 testing 82/516 data 0.0002s net 0.1031s post 0.0378s
+2017-10-25 14:04:17,139 testing 84/516 data 0.0002s net 0.1060s post 0.0423s
+2017-10-25 14:04:17,239 testing 86/516 data 0.0002s net 0.0577s post 0.0416s
+2017-10-25 14:04:17,339 testing 88/516 data 0.0002s net 0.0620s post 0.0383s
+2017-10-25 14:04:17,428 testing 90/516 data 0.0002s net 0.0548s post 0.0339s
+2017-10-25 14:04:17,547 testing 92/516 data 0.0002s net 0.0544s post 0.0641s
+2017-10-25 14:04:17,721 testing 94/516 data 0.0002s net 0.1172s post 0.0564s
+2017-10-25 14:04:17,885 testing 96/516 data 0.0002s net 0.1132s post 0.0509s
+2017-10-25 14:04:18,051 testing 98/516 data 0.0002s net 0.1314s post 0.0339s
+2017-10-25 14:04:18,218 testing 100/516 data 0.0002s net 0.1254s post 0.0420s
+2017-10-25 14:04:18,404 testing 102/516 data 0.0002s net 0.1370s post 0.0482s
+2017-10-25 14:04:18,583 testing 104/516 data 0.0002s net 0.1145s post 0.0647s
+2017-10-25 14:04:18,758 testing 106/516 data 0.0002s net 0.1190s post 0.0561s
+2017-10-25 14:04:18,952 testing 108/516 data 0.0002s net 0.1353s post 0.0585s
+2017-10-25 14:04:19,115 testing 110/516 data 0.0002s net 0.1287s post 0.0342s
+2017-10-25 14:04:19,272 testing 112/516 data 0.0002s net 0.1068s post 0.0499s
+2017-10-25 14:04:19,437 testing 114/516 data 0.0002s net 0.1269s post 0.0372s
+2017-10-25 14:04:19,597 testing 116/516 data 0.0002s net 0.1259s post 0.0346s
+2017-10-25 14:04:19,763 testing 118/516 data 0.0003s net 0.1266s post 0.0385s
+2017-10-25 14:04:19,923 testing 120/516 data 0.0002s net 0.1205s post 0.0397s
+2017-10-25 14:04:20,091 testing 122/516 data 0.0002s net 0.1312s post 0.0366s
+2017-10-25 14:04:20,240 testing 124/516 data 0.0002s net 0.1252s post 0.0231s
+2017-10-25 14:04:20,391 testing 126/516 data 0.0002s net 0.1201s post 0.0306s
+2017-10-25 14:04:20,551 testing 128/516 data 0.0002s net 0.1344s post 0.0254s
+2017-10-25 14:04:20,701 testing 130/516 data 0.0002s net 0.1260s post 0.0239s
+2017-10-25 14:04:20,849 testing 132/516 data 0.0002s net 0.1127s post 0.0352s
+2017-10-25 14:04:21,024 testing 134/516 data 0.0002s net 0.1228s post 0.0524s
+2017-10-25 14:04:21,200 testing 136/516 data 0.0002s net 0.1305s post 0.0450s
+2017-10-25 14:04:21,377 testing 138/516 data 0.0002s net 0.1363s post 0.0401s
+2017-10-25 14:04:21,541 testing 140/516 data 0.0002s net 0.1201s post 0.0437s
+2017-10-25 14:04:21,675 testing 142/516 data 0.0002s net 0.1050s post 0.0287s
+2017-10-25 14:04:21,814 testing 144/516 data 0.0002s net 0.1114s post 0.0282s
+2017-10-25 14:04:21,958 testing 146/516 data 0.0002s net 0.1140s post 0.0295s
+2017-10-25 14:04:22,095 testing 148/516 data 0.0002s net 0.0989s post 0.0375s
+2017-10-25 14:04:22,219 testing 150/516 data 0.0002s net 0.0942s post 0.0301s
+2017-10-25 14:04:22,356 testing 152/516 data 0.0002s net 0.1011s post 0.0358s
+2017-10-25 14:04:22,454 testing 154/516 data 0.0002s net 0.0559s post 0.0417s
+2017-10-25 14:04:22,557 testing 156/516 data 0.0086s net 0.0558s post 0.0387s
+2017-10-25 14:04:22,656 testing 158/516 data 0.0002s net 0.0572s post 0.0416s
+2017-10-25 14:04:22,755 testing 160/516 data 0.0002s net 0.0595s post 0.0391s
+2017-10-25 14:04:22,899 testing 162/516 data 0.0002s net 0.1103s post 0.0338s
+2017-10-25 14:04:23,059 testing 164/516 data 0.0002s net 0.1067s post 0.0532s
+2017-10-25 14:04:23,218 testing 166/516 data 0.0002s net 0.1071s post 0.0519s
+2017-10-25 14:04:23,330 testing 168/516 data 0.0002s net 0.0626s post 0.0486s
+2017-10-25 14:04:23,466 testing 170/516 data 0.0002s net 0.0611s post 0.0745s
+2017-10-25 14:04:23,619 testing 172/516 data 0.0002s net 0.1201s post 0.0334s
+2017-10-25 14:04:23,762 testing 174/516 data 0.0002s net 0.1038s post 0.0386s
+2017-10-25 14:04:23,885 testing 176/516 data 0.0002s net 0.1121s post 0.0110s
+2017-10-25 14:04:24,005 testing 178/516 data 0.0003s net 0.1073s post 0.0123s
+2017-10-25 14:04:24,115 testing 180/516 data 0.0002s net 0.0940s post 0.0159s
+2017-10-25 14:04:24,191 testing 182/516 data 0.0002s net 0.0567s post 0.0186s
+2017-10-25 14:04:24,306 testing 184/516 data 0.0002s net 0.1004s post 0.0144s
+2017-10-25 14:04:24,406 testing 186/516 data 0.0002s net 0.0936s post 0.0063s
+2017-10-25 14:04:24,460 testing 188/516 data 0.0002s net 0.0502s post 0.0035s
+2017-10-25 14:04:24,514 testing 190/516 data 0.0002s net 0.0497s post 0.0042s
+2017-10-25 14:04:24,577 testing 192/516 data 0.0002s net 0.0514s post 0.0116s
+2017-10-25 14:04:24,631 testing 194/516 data 0.0002s net 0.0524s post 0.0015s
+2017-10-25 14:04:24,755 testing 196/516 data 0.0002s net 0.0989s post 0.0245s
+2017-10-25 14:04:24,868 testing 198/516 data 0.0002s net 0.1042s post 0.0091s
+2017-10-25 14:04:25,010 testing 200/516 data 0.0002s net 0.1195s post 0.0219s
+2017-10-25 14:04:25,159 testing 202/516 data 0.0002s net 0.1186s post 0.0301s
+2017-10-25 14:04:25,280 testing 204/516 data 0.0002s net 0.1038s post 0.0171s
+2017-10-25 14:04:25,403 testing 206/516 data 0.0002s net 0.1014s post 0.0213s
+2017-10-25 14:04:25,550 testing 208/516 data 0.0002s net 0.1061s post 0.0408s
+2017-10-25 14:04:25,665 testing 210/516 data 0.0002s net 0.0961s post 0.0192s
+2017-10-25 14:04:25,792 testing 212/516 data 0.0002s net 0.0957s post 0.0307s
+2017-10-25 14:04:25,917 testing 214/516 data 0.0002s net 0.0997s post 0.0247s
+2017-10-25 14:04:26,037 testing 216/516 data 0.0002s net 0.0953s post 0.0245s
+2017-10-25 14:04:26,164 testing 218/516 data 0.0002s net 0.1113s post 0.0162s
+2017-10-25 14:04:26,292 testing 220/516 data 0.0002s net 0.1017s post 0.0260s
+2017-10-25 14:04:26,433 testing 222/516 data 0.0002s net 0.1175s post 0.0233s
+2017-10-25 14:04:26,577 testing 224/516 data 0.0002s net 0.1333s post 0.0100s
+2017-10-25 14:04:26,701 testing 226/516 data 0.0002s net 0.1100s post 0.0144s
+2017-10-25 14:04:26,838 testing 228/516 data 0.0002s net 0.1041s post 0.0325s
+2017-10-25 14:04:26,973 testing 230/516 data 0.0002s net 0.1112s post 0.0237s
+2017-10-25 14:04:27,092 testing 232/516 data 0.0002s net 0.0986s post 0.0202s
+2017-10-25 14:04:27,195 testing 234/516 data 0.0002s net 0.0933s post 0.0090s
+2017-10-25 14:04:27,260 testing 236/516 data 0.0002s net 0.0553s post 0.0100s
+2017-10-25 14:04:27,406 testing 238/516 data 0.0003s net 0.1258s post 0.0199s
+2017-10-25 14:04:27,535 testing 240/516 data 0.0002s net 0.1044s post 0.0246s
+2017-10-25 14:04:27,650 testing 242/516 data 0.0002s net 0.1024s post 0.0116s
+2017-10-25 14:04:27,765 testing 244/516 data 0.0002s net 0.0904s post 0.0247s
+2017-10-25 14:04:27,839 testing 246/516 data 0.0002s net 0.0512s post 0.0223s
+2017-10-25 14:04:27,949 testing 248/516 data 0.0002s net 0.0945s post 0.0157s
+2017-10-25 14:04:28,046 testing 250/516 data 0.0002s net 0.0893s post 0.0077s
+2017-10-25 14:04:28,113 testing 252/516 data 0.0002s net 0.0534s post 0.0128s
+2017-10-25 14:04:28,261 testing 254/516 data 0.0002s net 0.1180s post 0.0299s
+2017-10-25 14:04:28,410 testing 256/516 data 0.0003s net 0.1262s post 0.0233s
+2017-10-25 14:04:28,561 testing 258/516 data 0.0002s net 0.1154s post 0.0346s
+2017-10-25 14:04:28,671 testing 260/516 data 0.0002s net 0.0976s post 0.0130s
+2017-10-25 14:04:28,800 testing 262/516 data 0.0002s net 0.1037s post 0.0245s
+2017-10-25 14:04:28,937 testing 264/516 data 0.0002s net 0.1107s post 0.0262s
+2017-10-25 14:04:29,049 testing 266/516 data 0.0002s net 0.0936s post 0.0181s
+2017-10-25 14:04:29,124 testing 268/516 data 0.0002s net 0.0508s post 0.0238s
+2017-10-25 14:04:29,188 testing 270/516 data 0.0002s net 0.0532s post 0.0112s
+2017-10-25 14:04:29,251 testing 272/516 data 0.0002s net 0.0577s post 0.0045s
+2017-10-25 14:04:29,330 testing 274/516 data 0.0002s net 0.0507s post 0.0282s
+2017-10-25 14:04:29,458 testing 276/516 data 0.0002s net 0.1009s post 0.0276s
+2017-10-25 14:04:29,579 testing 278/516 data 0.0002s net 0.0998s post 0.0210s
+2017-10-25 14:04:29,691 testing 280/516 data 0.0002s net 0.0970s post 0.0148s
+2017-10-25 14:04:29,802 testing 282/516 data 0.0002s net 0.0983s post 0.0120s
+2017-10-25 14:04:29,899 testing 284/516 data 0.0002s net 0.0957s post 0.0014s
+2017-10-25 14:04:30,009 testing 286/516 data 0.0002s net 0.1001s post 0.0094s
+2017-10-25 14:04:30,131 testing 288/516 data 0.0002s net 0.0981s post 0.0243s
+2017-10-25 14:04:30,267 testing 290/516 data 0.0002s net 0.1082s post 0.0274s
+2017-10-25 14:04:30,388 testing 292/516 data 0.0002s net 0.1021s post 0.0179s
+2017-10-25 14:04:30,506 testing 294/516 data 0.0002s net 0.0940s post 0.0247s
+2017-10-25 14:04:30,639 testing 296/516 data 0.0002s net 0.1117s post 0.0211s
+2017-10-25 14:04:30,736 testing 298/516 data 0.0002s net 0.0918s post 0.0045s
+2017-10-25 14:04:30,793 testing 300/516 data 0.0002s net 0.0501s post 0.0072s
+2017-10-25 14:04:30,862 testing 302/516 data 0.0002s net 0.0507s post 0.0173s
+2017-10-25 14:04:30,961 testing 304/516 data 0.0002s net 0.0941s post 0.0051s
+2017-10-25 14:04:31,075 testing 306/516 data 0.0002s net 0.0975s post 0.0164s
+2017-10-25 14:04:31,168 testing 308/516 data 0.0002s net 0.0916s post 0.0015s
+2017-10-25 14:04:31,307 testing 310/516 data 0.0002s net 0.0991s post 0.0393s
+2017-10-25 14:04:31,412 testing 312/516 data 0.0002s net 0.0963s post 0.0081s
+2017-10-25 14:04:31,482 testing 314/516 data 0.0002s net 0.0575s post 0.0129s
+2017-10-25 14:04:31,563 testing 316/516 data 0.0002s net 0.0585s post 0.0222s
+2017-10-25 14:04:31,630 testing 318/516 data 0.0002s net 0.0563s post 0.0103s
+2017-10-25 14:04:31,771 testing 320/516 data 0.0002s net 0.1035s post 0.0379s
+2017-10-25 14:04:31,906 testing 322/516 data 0.0002s net 0.1185s post 0.0163s
+2017-10-25 14:04:32,023 testing 324/516 data 0.0002s net 0.1019s post 0.0145s
+2017-10-25 14:04:32,129 testing 326/516 data 0.0002s net 0.0967s post 0.0095s
+2017-10-25 14:04:32,197 testing 328/516 data 0.0002s net 0.0501s post 0.0173s
+2017-10-25 14:04:32,272 testing 330/516 data 0.0002s net 0.0511s post 0.0236s
+2017-10-25 14:04:32,407 testing 332/516 data 0.0002s net 0.0980s post 0.0373s
+2017-10-25 14:04:32,531 testing 334/516 data 0.0002s net 0.0988s post 0.0246s
+2017-10-25 14:04:32,637 testing 336/516 data 0.0002s net 0.0930s post 0.0126s
+2017-10-25 14:04:32,715 testing 338/516 data 0.0002s net 0.0520s post 0.0260s
+2017-10-25 14:04:32,827 testing 340/516 data 0.0002s net 0.0915s post 0.0199s
+2017-10-25 14:04:32,948 testing 342/516 data 0.0002s net 0.1074s post 0.0141s
+2017-10-25 14:04:33,065 testing 344/516 data 0.0002s net 0.0937s post 0.0232s
+2017-10-25 14:04:33,210 testing 346/516 data 0.0002s net 0.0978s post 0.0469s
+2017-10-25 14:04:33,347 testing 348/516 data 0.0002s net 0.1169s post 0.0201s
+2017-10-25 14:04:33,468 testing 350/516 data 0.0002s net 0.0986s post 0.0215s
+2017-10-25 14:04:33,582 testing 352/516 data 0.0002s net 0.0942s post 0.0202s
+2017-10-25 14:04:33,689 testing 354/516 data 0.0002s net 0.0910s post 0.0154s
+2017-10-25 14:04:33,761 testing 356/516 data 0.0002s net 0.0504s post 0.0214s
+2017-10-25 14:04:33,905 testing 358/516 data 0.0002s net 0.0922s post 0.0521s
+2017-10-25 14:04:34,026 testing 360/516 data 0.0002s net 0.0909s post 0.0296s
+2017-10-25 14:04:34,081 testing 362/516 data 0.0002s net 0.0496s post 0.0056s
+2017-10-25 14:04:34,144 testing 364/516 data 0.0002s net 0.0509s post 0.0112s
+2017-10-25 14:04:34,275 testing 366/516 data 0.0002s net 0.0951s post 0.0360s
+2017-10-25 14:04:34,391 testing 368/516 data 0.0002s net 0.0932s post 0.0227s
+2017-10-25 14:04:34,509 testing 370/516 data 0.0002s net 0.0942s post 0.0234s
+2017-10-25 14:04:34,579 testing 372/516 data 0.0002s net 0.0546s post 0.0150s
+2017-10-25 14:04:34,700 testing 374/516 data 0.0002s net 0.1006s post 0.0204s
+2017-10-25 14:04:34,774 testing 376/516 data 0.0002s net 0.0556s post 0.0179s
+2017-10-25 14:04:34,903 testing 378/516 data 0.0002s net 0.0969s post 0.0320s
+2017-10-25 14:04:35,023 testing 380/516 data 0.0002s net 0.1029s post 0.0169s
+2017-10-25 14:04:35,183 testing 382/516 data 0.0003s net 0.1303s post 0.0303s
+2017-10-25 14:04:35,300 testing 384/516 data 0.0002s net 0.1024s post 0.0135s
+2017-10-25 14:04:35,428 testing 386/516 data 0.0002s net 0.0995s post 0.0285s
+2017-10-25 14:04:35,484 testing 388/516 data 0.0003s net 0.0535s post 0.0024s
+2017-10-25 14:04:35,625 testing 390/516 data 0.0003s net 0.1061s post 0.0351s
+2017-10-25 14:04:35,735 testing 392/516 data 0.0002s net 0.0956s post 0.0139s
+2017-10-25 14:04:35,858 testing 394/516 data 0.0002s net 0.0958s post 0.0268s
+2017-10-25 14:04:35,993 testing 396/516 data 0.0002s net 0.1030s post 0.0316s
+2017-10-25 14:04:36,100 testing 398/516 data 0.0003s net 0.1016s post 0.0054s
+2017-10-25 14:04:36,204 testing 400/516 data 0.0002s net 0.0979s post 0.0060s
+2017-10-25 14:04:36,263 testing 402/516 data 0.0002s net 0.0492s post 0.0092s
+2017-10-25 14:04:36,384 testing 404/516 data 0.0002s net 0.0992s post 0.0219s
+2017-10-25 14:04:36,518 testing 406/516 data 0.0002s net 0.1116s post 0.0220s
+2017-10-25 14:04:36,646 testing 408/516 data 0.0003s net 0.1007s post 0.0272s
+2017-10-25 14:04:36,752 testing 410/516 data 0.0002s net 0.0978s post 0.0084s
+2017-10-25 14:04:36,877 testing 412/516 data 0.0002s net 0.1003s post 0.0238s
+2017-10-25 14:04:36,982 testing 414/516 data 0.0002s net 0.0927s post 0.0125s
+2017-10-25 14:04:37,045 testing 416/516 data 0.0002s net 0.0504s post 0.0118s
+2017-10-25 14:04:37,104 testing 418/516 data 0.0002s net 0.0506s post 0.0088s
+2017-10-25 14:04:37,171 testing 420/516 data 0.0002s net 0.0520s post 0.0150s
+2017-10-25 14:04:37,229 testing 422/516 data 0.0008s net 0.0494s post 0.0076s
+2017-10-25 14:04:37,287 testing 424/516 data 0.0002s net 0.0509s post 0.0061s
+2017-10-25 14:04:37,361 testing 426/516 data 0.0002s net 0.0524s post 0.0215s
+2017-10-25 14:04:37,477 testing 428/516 data 0.0002s net 0.1000s post 0.0165s
+2017-10-25 14:04:37,606 testing 430/516 data 0.0002s net 0.1065s post 0.0222s
+2017-10-25 14:04:38,021 testing 432/516 data 0.1893s net 0.2020s post 0.0230s
+2017-10-25 14:04:38,158 testing 434/516 data 0.0003s net 0.1238s post 0.0134s
+2017-10-25 14:04:38,326 testing 436/516 data 0.0003s net 0.1283s post 0.0388s
+2017-10-25 14:04:38,479 testing 438/516 data 0.0003s net 0.1400s post 0.0129s
+2017-10-25 14:04:38,609 testing 440/516 data 0.0003s net 0.1206s post 0.0094s
+2017-10-25 14:04:38,735 testing 442/516 data 0.0002s net 0.1006s post 0.0256s
+2017-10-25 14:04:38,840 testing 444/516 data 0.0002s net 0.0963s post 0.0083s
+2017-10-25 14:04:38,911 testing 446/516 data 0.0002s net 0.0513s post 0.0194s
+2017-10-25 14:04:38,982 testing 448/516 data 0.0002s net 0.0553s post 0.0156s
+2017-10-25 14:04:39,111 testing 450/516 data 0.0002s net 0.1066s post 0.0225s
+2017-10-25 14:04:39,262 testing 452/516 data 0.0003s net 0.1142s post 0.0366s
+2017-10-25 14:04:39,380 testing 454/516 data 0.0002s net 0.0945s post 0.0229s
+2017-10-25 14:04:39,451 testing 456/516 data 0.0002s net 0.0503s post 0.0209s
+2017-10-25 14:04:39,554 testing 458/516 data 0.0002s net 0.0933s post 0.0091s
+2017-10-25 14:04:39,682 testing 460/516 data 0.0002s net 0.1050s post 0.0234s
+2017-10-25 14:04:39,796 testing 462/516 data 0.0002s net 0.0963s post 0.0170s
+2017-10-25 14:04:39,891 testing 464/516 data 0.0002s net 0.0935s post 0.0016s
+2017-10-25 14:04:40,011 testing 466/516 data 0.0002s net 0.1077s post 0.0120s
+2017-10-25 14:04:40,155 testing 468/516 data 0.0002s net 0.1069s post 0.0367s
+2017-10-25 14:04:40,303 testing 470/516 data 0.0003s net 0.1195s post 0.0281s
+2017-10-25 14:04:40,444 testing 472/516 data 0.0003s net 0.1082s post 0.0330s
+2017-10-25 14:04:40,559 testing 474/516 data 0.0002s net 0.0937s post 0.0206s
+2017-10-25 14:04:40,685 testing 476/516 data 0.0002s net 0.0971s post 0.0287s
+2017-10-25 14:04:40,793 testing 478/516 data 0.0002s net 0.0979s post 0.0101s
+2017-10-25 14:04:40,920 testing 480/516 data 0.0002s net 0.0972s post 0.0290s
+2017-10-25 14:04:41,002 testing 482/516 data 0.0002s net 0.0557s post 0.0266s
+2017-10-25 14:04:41,110 testing 484/516 data 0.0002s net 0.0979s post 0.0101s
+2017-10-25 14:04:41,218 testing 486/516 data 0.0002s net 0.0919s post 0.0154s
+2017-10-25 14:04:41,289 testing 488/516 data 0.0002s net 0.0513s post 0.0202s
+2017-10-25 14:04:41,424 testing 490/516 data 0.0002s net 0.1002s post 0.0342s
+2017-10-25 14:04:41,567 testing 492/516 data 0.0002s net 0.1145s post 0.0283s
+2017-10-25 14:04:41,719 testing 494/516 data 0.0002s net 0.1119s post 0.0402s
+2017-10-25 14:04:41,837 testing 496/516 data 0.0002s net 0.0972s post 0.0208s
+2017-10-25 14:04:41,949 testing 498/516 data 0.0002s net 0.1000s post 0.0115s
+2017-10-25 14:04:42,074 testing 500/516 data 0.0003s net 0.0999s post 0.0250s
+2017-10-25 14:04:42,199 testing 502/516 data 0.0002s net 0.1058s post 0.0187s
+2017-10-25 14:04:42,267 testing 504/516 data 0.0002s net 0.0498s post 0.0181s
+2017-10-25 14:04:42,335 testing 506/516 data 0.0002s net 0.0502s post 0.0175s
+2017-10-25 14:04:42,492 testing 508/516 data 0.0002s net 0.1033s post 0.0533s
+2017-10-25 14:04:42,644 testing 510/516 data 0.0002s net 0.0997s post 0.0518s
+2017-10-25 14:04:42,769 testing 512/516 data 0.0002s net 0.1048s post 0.0207s
+2017-10-25 14:04:42,889 testing 514/516 data 0.0002s net 0.1051s post 0.0148s
+2017-10-25 14:04:42,990 testing 516/516 data 0.0002s net 0.0921s post 0.0082s
+2017-10-25 14:05:39,463 evaluate detections: 
+VOC07 metric? Y
+~~~~~~ Evaluation use min overlap = 0.5 ~~~~~~
+AP for CubeBody = 0.00
+AP for CubeFace = 0.00
+Mean AP@0.5 = 0.00
+~~~~~~ Evaluation use min overlap = 0.7 ~~~~~~
+AP for CubeBody = 0.00
+AP for CubeFace = 0.00
+Mean AP@0.7 = 0.00
+

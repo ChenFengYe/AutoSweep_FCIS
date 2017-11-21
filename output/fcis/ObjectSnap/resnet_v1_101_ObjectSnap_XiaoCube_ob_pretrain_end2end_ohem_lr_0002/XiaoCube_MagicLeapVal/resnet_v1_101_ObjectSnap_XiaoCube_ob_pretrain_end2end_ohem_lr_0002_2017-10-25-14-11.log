@@ -1,0 +1,171 @@
+2017-10-25 14:11:12,345 testing config:{'BINARY_THRESH': 0.4,
+ 'CLASS_AGNOSTIC': True,
+ 'MASK_SIZE': 21,
+ 'MXNET_VERSION': 'mxnet',
+ 'SCALES': [(600, 1000)],
+ 'TEST': {'BATCH_IMAGES': 1,
+          'CXX_PROPOSAL': False,
+          'HAS_RPN': True,
+          'ITER': 2,
+          'MASK_MERGE_THRESH': 0.5,
+          'MIN_DROP_SIZE': 16,
+          'NMS': 0.3,
+          'PROPOSAL_MIN_SIZE': 16,
+          'PROPOSAL_NMS_THRESH': 0.7,
+          'PROPOSAL_POST_NMS_TOP_N': 2000,
+          'PROPOSAL_PRE_NMS_TOP_N': 20000,
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'USE_GPU_MASK_MERGE': True,
+          'USE_MASK_MERGE': True,
+          'test_epoch': 20},
+ 'TRAIN': {'ASPECT_GROUPING': True,
+           'BATCH_IMAGES': 1,
+           'BATCH_ROIS': 128,
+           'BATCH_ROIS_OHEM': 128,
+           'BBOX_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZATION_PRECOMPUTED': True,
+           'BBOX_REGRESSION_THRESH': 0.5,
+           'BBOX_STDS': [0.2, 0.2, 0.5, 0.5],
+           'BBOX_WEIGHTS': array([ 1.,  1.,  1.,  1.]),
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.1,
+           'BINARY_THRESH': 0.4,
+           'CONVNEW3': True,
+           'CXX_PROPOSAL': False,
+           'ENABLE_OHEM': True,
+           'END2END': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'FLIP': True,
+           'GAP_SELECT_FROM_ALL': False,
+           'IGNORE_GAP': False,
+           'LOSS_WEIGHT': [1.0, 10.0, 1.0],
+           'RESUME': False,
+           'RPN_ALLOWED_BORDER': 0,
+           'RPN_BATCH_SIZE': 256,
+           'RPN_BBOX_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SHUFFLE': True,
+           'begin_epoch': 0,
+           'end_epoch': 20,
+           'lr': 0.0002,
+           'lr_step': '14',
+           'model_prefix': 'e2e',
+           'momentum': 0.9,
+           'warmup': True,
+           'warmup_lr': 5e-05,
+           'warmup_step': 4000,
+           'wd': 0.0005},
+ 'config_name': 'resnet_v1_101_ObjectSnap_XiaoCube_ob_pretrain_end2end_ohem_lr_0002',
+ 'dataset': {'NUM_CLASSES': 3,
+             'dataset': 'ObjectSnap',
+             'dataset_path': './data/ObjectSnap',
+             'image_set': 'XiaoCube_MagicLeapTrain',
+             'proposal': 'rpn',
+             'root_path': './data',
+             'test_image_set': 'XiaoCube_MagicLeapVal'},
+ 'default': {'frequent': 100, 'kvstore': 'device'},
+ 'gpus': '0,1',
+ 'network': {'ANCHOR_RATIOS': [0.5, 1, 2],
+             'ANCHOR_SCALES': [8, 16, 32],
+             'FIXED_PARAMS': ['conv1',
+                              'bn_conv1',
+                              'res2',
+                              'bn2',
+                              'gamma',
+                              'beta'],
+             'FIXED_PARAMS_SHARED': ['conv1',
+                                     'bn_conv1',
+                                     'res2',
+                                     'bn2',
+                                     'res3',
+                                     'bn3',
+                                     'res4',
+                                     'bn4',
+                                     'gamma',
+                                     'beta'],
+             'IMAGE_STRIDE': 0,
+             'NUM_ANCHORS': 9,
+             'PIXEL_MEANS': array([ 103.06,  115.9 ,  123.15]),
+             'RCNN_FEAT_STRIDE': 16,
+             'RPN_FEAT_STRIDE': 16,
+             'pretrained': './model/pretrained_model/ob_data',
+             'pretrained_epoch': 0},
+ 'output_path': './output/fcis/ObjectSnap',
+ 'symbol': 'resnet_v1_101_fcis'}
+
+2017-10-25 14:11:15,903 testing 2/128 data 0.1583s net 0.1420s post 0.0186s
+2017-10-25 14:11:16,070 testing 4/128 data 0.0003s net 0.1503s post 0.0168s
+2017-10-25 14:11:16,243 testing 6/128 data 0.0004s net 0.1490s post 0.0235s
+2017-10-25 14:11:16,428 testing 8/128 data 0.0003s net 0.1395s post 0.0454s
+2017-10-25 14:11:16,599 testing 10/128 data 0.0003s net 0.1409s post 0.0300s
+2017-10-25 14:11:16,727 testing 12/128 data 0.0003s net 0.1207s post 0.0066s
+2017-10-25 14:11:16,861 testing 14/128 data 0.0002s net 0.1200s post 0.0135s
+2017-10-25 14:11:16,993 testing 16/128 data 0.0002s net 0.1106s post 0.0215s
+2017-10-25 14:11:17,124 testing 18/128 data 0.0002s net 0.1025s post 0.0280s
+2017-10-25 14:11:17,255 testing 20/128 data 0.0002s net 0.1063s post 0.0246s
+2017-10-25 14:11:17,405 testing 22/128 data 0.0002s net 0.1053s post 0.0446s
+2017-10-25 14:11:17,527 testing 24/128 data 0.0002s net 0.1074s post 0.0149s
+2017-10-25 14:11:17,656 testing 26/128 data 0.0003s net 0.1034s post 0.0245s
+2017-10-25 14:11:17,729 testing 28/128 data 0.0003s net 0.0599s post 0.0135s
+2017-10-25 14:11:17,820 testing 30/128 data 0.0003s net 0.0569s post 0.0333s
+2017-10-25 14:11:17,913 testing 32/128 data 0.0003s net 0.0626s post 0.0299s
+2017-10-25 14:11:17,991 testing 34/128 data 0.0004s net 0.0587s post 0.0197s
+2017-10-25 14:11:18,083 testing 36/128 data 0.0003s net 0.0600s post 0.0318s
+2017-10-25 14:11:18,177 testing 38/128 data 0.0003s net 0.0623s post 0.0306s
+2017-10-25 14:11:18,359 testing 40/128 data 0.0003s net 0.1326s post 0.0498s
+2017-10-25 14:11:18,472 testing 42/128 data 0.0002s net 0.1021s post 0.0103s
+2017-10-25 14:11:18,547 testing 44/128 data 0.0002s net 0.0603s post 0.0141s
+2017-10-25 14:11:18,661 testing 46/128 data 0.0002s net 0.0974s post 0.0164s
+2017-10-25 14:11:18,790 testing 48/128 data 0.0002s net 0.1034s post 0.0257s
+2017-10-25 14:11:18,912 testing 50/128 data 0.0002s net 0.0946s post 0.0273s
+2017-10-25 14:11:19,030 testing 52/128 data 0.0002s net 0.0976s post 0.0202s
+2017-10-25 14:11:19,167 testing 54/128 data 0.0003s net 0.1057s post 0.0314s
+2017-10-25 14:11:19,343 testing 56/128 data 0.0003s net 0.1397s post 0.0352s
+2017-10-25 14:11:19,509 testing 58/128 data 0.0004s net 0.1388s post 0.0277s
+2017-10-25 14:11:19,678 testing 60/128 data 0.0003s net 0.1310s post 0.0370s
+2017-10-25 14:11:19,839 testing 62/128 data 0.0003s net 0.1293s post 0.0319s
+2017-10-25 14:11:20,007 testing 64/128 data 0.0003s net 0.1329s post 0.0344s
+2017-10-25 14:11:20,146 testing 66/128 data 0.0002s net 0.1128s post 0.0261s
+2017-10-25 14:11:20,306 testing 68/128 data 0.0003s net 0.1138s post 0.0455s
+2017-10-25 14:11:20,475 testing 70/128 data 0.0003s net 0.1275s post 0.0416s
+2017-10-25 14:11:20,634 testing 72/128 data 0.0003s net 0.1290s post 0.0301s
+2017-10-25 14:11:20,797 testing 74/128 data 0.0003s net 0.1322s post 0.0297s
+2017-10-25 14:11:20,926 testing 76/128 data 0.0003s net 0.1006s post 0.0289s
+2017-10-25 14:11:21,053 testing 78/128 data 0.0002s net 0.0990s post 0.0276s
+2017-10-25 14:11:21,196 testing 80/128 data 0.0002s net 0.1029s post 0.0400s
+2017-10-25 14:11:21,338 testing 82/128 data 0.0002s net 0.1062s post 0.0353s
+2017-10-25 14:11:21,488 testing 84/128 data 0.0002s net 0.1065s post 0.0429s
+2017-10-25 14:11:21,597 testing 86/128 data 0.0002s net 0.0679s post 0.0410s
+2017-10-25 14:11:21,705 testing 88/128 data 0.0002s net 0.0617s post 0.0465s
+2017-10-25 14:11:21,806 testing 90/128 data 0.0002s net 0.0655s post 0.0347s
+2017-10-25 14:11:21,935 testing 92/128 data 0.0002s net 0.0639s post 0.0652s
+2017-10-25 14:11:22,095 testing 94/128 data 0.0003s net 0.1053s post 0.0540s
+2017-10-25 14:11:22,275 testing 96/128 data 0.0002s net 0.1266s post 0.0532s
+2017-10-25 14:11:22,469 testing 98/128 data 0.0003s net 0.1544s post 0.0393s
+2017-10-25 14:11:22,659 testing 100/128 data 0.0003s net 0.1489s post 0.0413s
+2017-10-25 14:11:22,831 testing 102/128 data 0.0003s net 0.1212s post 0.0500s
+2017-10-25 14:11:23,025 testing 104/128 data 0.0003s net 0.1366s post 0.0577s
+2017-10-25 14:11:23,204 testing 106/128 data 0.0002s net 0.1239s post 0.0540s
+2017-10-25 14:11:23,369 testing 108/128 data 0.0002s net 0.1072s post 0.0579s
+2017-10-25 14:11:23,521 testing 110/128 data 0.0002s net 0.1195s post 0.0327s
+2017-10-25 14:11:23,675 testing 112/128 data 0.0002s net 0.1071s post 0.0467s
+2017-10-25 14:11:23,828 testing 114/128 data 0.0002s net 0.1149s post 0.0372s
+2017-10-25 14:11:23,965 testing 116/128 data 0.0002s net 0.1048s post 0.0320s
+2017-10-25 14:11:24,137 testing 118/128 data 0.0003s net 0.1313s post 0.0408s
+2017-10-25 14:11:24,303 testing 120/128 data 0.0003s net 0.1293s post 0.0365s
+2017-10-25 14:11:24,456 testing 122/128 data 0.0002s net 0.1155s post 0.0373s
+2017-10-25 14:11:24,595 testing 124/128 data 0.0002s net 0.1155s post 0.0233s
+2017-10-25 14:11:24,725 testing 126/128 data 0.0002s net 0.1032s post 0.0263s
+2017-10-25 14:11:24,853 testing 128/128 data 0.0002s net 0.1039s post 0.0241s

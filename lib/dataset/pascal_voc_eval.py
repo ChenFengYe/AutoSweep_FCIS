@@ -314,6 +314,11 @@ def parse_inst(image_name, devkit_path):
         num_cls = np.unique(mask_cls)
         assert num_cls.shape[0] == 1
         cur_inst = num_cls[0]
+        # chenxin
+        # for 5 classes
+        # if cur_inst  == 5:
+        #     cur_inst = 3
+
         record.append({
             'mask': mask,
             'mask_cls': cur_inst,

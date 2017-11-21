@@ -23,7 +23,8 @@ def test_fcis(config, dataset, image_set, root_path, dataset_path,
         assert False, 'require a logger'
 
     # print config
-    pprint.pprint(config)
+    # pprint.pprint(config)
+    # print('Number of Images: %d \n'%(len(image_set));
     logger.info('testing config:{}\n'.format(pprint.pformat(config)))
 
     # load symbol and testing data

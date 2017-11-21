@@ -12,7 +12,3 @@ import test
 if __name__ == "__main__":
     train_end2end.main()
     test.main()
-
-
-
-
